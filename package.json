@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate.js",
+  "scripts": {
+    "generate": "node ./generate.js"
+  },
+  "author": "Nikolay Garmash",
+  "license": "ISC",
+  "private": true,
+  "engines": {
+    "node": "^6.11.1",
+    "npm": "^5.3.0"
+  }
+}
