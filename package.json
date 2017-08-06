@@ -1,7 +1,7 @@
 {
   "name": "html-parser",
   "version": "0.0.1",
-  "description": "",
+  "description": " ",
   "main": "generate.js",
   "scripts": {
     "generate": "node ./generate.js"
