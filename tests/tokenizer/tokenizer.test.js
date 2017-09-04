@@ -3,23 +3,33 @@ const test = require('tape')
 
 const tokenize = require('../../lib/tokenize')
 
-const testCases = [
-  '0'
-]
+const testCases = {
+  'opening-closing-text': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/opening-closing-text.html'), 'utf8'),
+    output: require('./stubs/outputs/opening-closing-text')
+  },
+  'nested-tags': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/nested-tags.html'), 'utf8'),
+    output: require('./stubs/outputs/nested-tags')
+  },
+  'custom-elements': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/custom-elements.html'), 'utf8'),
+    output: require('./stubs/outputs/custom-elements')
+  }
+}
 
-testCases.forEach((testCase) => {
-  const input = fs.readFileSync(`${ __dirname }/stubs/inputs/${ testCase }.html`, 'utf8')
-  const output = require(`./stubs/outputs/${ testCase }.js`)
+test('Tokenizer', (t) => {
+  Object.keys(testCases).forEach((testCaseKey) => {
+    const testCase = testCases[testCaseKey]
+    const resultTokens = tokenize(testCase.input)
 
-  const resultTokens = tokenize(input)
-
-  test('Tokenizer', (t) => {
     t.deepEqual(
       resultTokens,
-      output,
-      `${ testCase }.html`
+      testCase.output,
+      `${ testCaseKey }.html`
     )
-    t.end()
   })
+
+  t.end()
 })
 
