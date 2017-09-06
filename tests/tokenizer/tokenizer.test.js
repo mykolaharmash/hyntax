@@ -21,9 +21,9 @@ const testCases = {
 test('Tokenizer', (t) => {
   Object.keys(testCases).forEach((testCaseKey) => {
     const testCase = testCases[testCaseKey]
-    const resultTokens = tokenize(testCase.input)
+    const { tokens } = tokenize(testCase.input)
 
-    t.deepEqual(resultTokens, testCase.output, `${ testCaseKey }.html`)
+    t.deepEqual(tokens, testCase.output, `${ testCaseKey }.html`)
   })
 
   t.end()

@@ -7,8 +7,8 @@ let prettyJSON = require('./lib/helpers').prettyJSON
 
 let template = fs.readFileSync(path.resolve(__dirname, './template.html'), 'utf8')
 
-let tokens = tokenize(template)
-let ast = parse(tokens)
+let tokenizerState = tokenize(template)
+let ast = parse(tokenizerState.tokens)
 
-fs.writeFileSync('./tmp/tokens.json', prettyJSON(tokens))
+fs.writeFileSync('./tmp/tokens.json', prettyJSON(tokenizerState.tokens))
 fs.writeFileSync('./tmp/ast.json', prettyJSON(ast))

@@ -15,6 +15,9 @@
     "npm": "^5.3.0"
   },
   "devDependencies": {
+    "html-tokenizer": "^2.0.0",
+    "htmlparser2": "^3.9.2",
+    "parse5": "^3.0.2",
     "tap-difflet": "^0.7.0",
     "tape": "^3.6.1"
   }
