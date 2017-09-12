@@ -26,8 +26,5 @@
     "tape": "^3.6.1",
     "through2": "^2.0.3",
     "tokenize-htmltext": "^1.0.0"
-  },
-  "dependencies": {
-    "csv": "^1.1.1"
   }
 }
