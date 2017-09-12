@@ -9,9 +9,9 @@ const {
   TOKEN_CLOSE_TAG_SCRIPT,
   TOKEN_ATTRIBUTE_KEY,
   TOKEN_ATTRIBUTE_ASSIGNMENT,
-  TOKEN_ATTRIBUTE_VALUE_QUOTE_START,
-  TOKEN_ATTRIBUTE_VALUE_QUOTE,
-  TOKEN_ATTRIBUTE_VALUE_QUOTE_END
+  TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
+  TOKEN_ATTRIBUTE_VALUE,
+  TOKEN_ATTRIBUTE_VALUE_WRAPPER_END
 } = require('../../../../lib/constants/token-types')
 
 module.exports = [
@@ -43,15 +43,15 @@ module.exports = [
     content: '='
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_START,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
     content: '"'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE,
+    type: TOKEN_ATTRIBUTE_VALUE,
     content: 'text/javascript'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_END,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
     content: '"'
   },
 
@@ -64,15 +64,15 @@ module.exports = [
     content: '='
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_START,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
     content: '"'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE,
+    type: TOKEN_ATTRIBUTE_VALUE,
     content: 'thing'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_END,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
     content: '"'
   },
   {
@@ -107,15 +107,15 @@ module.exports = [
     content: '='
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_START,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
     content: '"'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE,
+    type: TOKEN_ATTRIBUTE_VALUE,
     content: 'text/javascript'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_END,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
     content: '"'
   },
 
@@ -171,15 +171,15 @@ module.exports = [
     content: '='
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_START,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
     content: '"'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE,
+    type: TOKEN_ATTRIBUTE_VALUE,
     content: 'text/javascript'
   },
   {
-    type: TOKEN_ATTRIBUTE_VALUE_QUOTE_END,
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
     content: '"'
   },
   {
