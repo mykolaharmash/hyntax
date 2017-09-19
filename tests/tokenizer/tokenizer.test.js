@@ -27,6 +27,10 @@ const testCases = {
   'Script elements attributes (quotes)': {
     input: fs.readFileSync(require.resolve('./stubs/inputs/script-elements-attributes-quote.html'), 'utf8'),
     output: require('./stubs/outputs/script-elements-attribute-quote')
+  },
+  'Doctype': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/doctypes.html'), 'utf8'),
+    output: require('./stubs/outputs/doctypes')
   }
 }
 
