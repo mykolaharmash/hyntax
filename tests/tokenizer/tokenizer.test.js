@@ -31,6 +31,10 @@ const testCases = {
   'Doctype': {
     input: fs.readFileSync(require.resolve('./stubs/inputs/doctypes.html'), 'utf8'),
     output: require('./stubs/outputs/doctypes')
+  },
+  'Comments': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/comments.html'), 'utf8'),
+    output: require('./stubs/outputs/comments')
   }
 }
 
