@@ -17,7 +17,7 @@ test('Parser', (t) => {
   const input = require('./stubs/inputs/nested-tags')
   const output = require('./stubs/outputs/nested-tags')
 
-  const ast = parse(input)
+  const { ast } = parse(input)
   const diff = getDiff(output, ast)
 
   t.equal(diff, undefined, 'Nested Tags')
