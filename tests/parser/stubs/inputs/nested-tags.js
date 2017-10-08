@@ -8,11 +8,15 @@ const {
 module.exports = [
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<div'
+    content: '<div',
+    startPosition: 0,
+    endPosition: 3
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 4,
+    endPosition: 4
   },
   {
     type: TOKEN_TEXT,
@@ -22,11 +26,15 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<span'
+    content: '<span',
+    startPosition: 8,
+    endPosition: 11
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 12,
+    endPosition: 12
   },
   {
     type: TOKEN_TEXT,
@@ -36,11 +44,15 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<span'
+    content: '<span',
+    startPosition: 34,
+    endPosition: 37
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 38,
+    endPosition: 38
   },
   {
     type: TOKEN_TEXT,
@@ -50,7 +62,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</span>'
+    content: '</span>',
+    startPosition: 64,
+    endPosition: 68
   },
   {
     type: TOKEN_TEXT,
@@ -60,7 +74,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</span>'
+    content: '</span>',
+    startPosition: 74,
+    endPosition: 78
   },
   {
     type: TOKEN_TEXT,
@@ -70,7 +86,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</div>'
+    content: '</div>',
+    startPosition: 82,
+    endPosition: 85
   },
   {
     type: TOKEN_TEXT,

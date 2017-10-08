@@ -2,6 +2,7 @@ const fs = require('fs')
 const test = require('tape')
 
 const tokenize = require('../../lib/tokenize')
+const getDiff = require('../test-helpers').getDiff
 
 const testCases = {
   'Opening and closing text': {
@@ -43,7 +44,9 @@ test('Tokenizer Syntax', (t) => {
     const testCase = testCases[testCaseKey]
     const { tokens } = tokenize(testCase.input)
 
-    t.deepEqual(tokens, testCase.output, testCaseKey)
+    const diff = getDiff(testCase.output, tokens)
+
+    t.equal(diff, undefined, testCaseKey)
   })
 
   t.end()

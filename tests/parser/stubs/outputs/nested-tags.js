@@ -63,7 +63,9 @@ module.exports = {
                         },
                         {
                           type: TOKEN_CLOSE_TAG,
-                          content: '</span>'
+                          content: '</span>',
+                          startPosition: 64,
+                          endPosition: 68
                         }
                       ]
                     },
@@ -77,7 +79,9 @@ module.exports = {
                 },
                 {
                   type: TOKEN_CLOSE_TAG,
-                  content: '</span>'
+                  content: '</span>',
+                  startPosition: 74,
+                  endPosition: 78
                 }
               ]
             },
@@ -91,7 +95,9 @@ module.exports = {
         },
         {
           type: TOKEN_CLOSE_TAG,
-          content: '</div>'
+          content: '</div>',
+          startPosition: 82,
+          endPosition: 85
         }
       ]
     },

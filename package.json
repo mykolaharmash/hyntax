@@ -16,17 +16,8 @@
   },
   "devDependencies": {
     "deep-diff": "^0.3.8",
-    "html-lexer": "^0.2.0",
-    "html-tokenize": "^2.0.0",
-    "html-tokenizer": "^2.0.0",
-    "html-tree": "^1.0.0",
-    "htmlparser2": "^3.9.2",
-    "parse5": "^3.0.2",
     "posthtml-parser": "^0.2.1",
     "tap-spec": "^4.1.1",
-    "tape": "^4.8.0",
-    "through2": "^2.0.3",
-    "tokenize-htmltext": "^1.0.0",
-    "v8-profiler": "^5.7.0"
+    "tape": "^4.8.0"
   }
 }

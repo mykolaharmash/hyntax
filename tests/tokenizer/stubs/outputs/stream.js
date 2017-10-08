@@ -13,11 +13,15 @@ const {
 module.exports = [
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<div'
+    content: '<div',
+    startPosition: 0,
+    endPosition: 3
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 4,
+    endPosition: 4
   },
   {
     type: TOKEN_TEXT,
@@ -27,15 +31,21 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</div>'
+    content: '</div>',
+    startPosition: 15,
+    endPosition: 20
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<some-component'
+    content: '<some-component',
+    startPosition: 21,
+    endPosition: 35
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 36,
+    endPosition: 36
   },
   {
     type: TOKEN_TEXT,
@@ -45,47 +55,69 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</some-component>'
+    content: '</some-component>',
+    startPosition: 50,
+    endPosition: 66
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<div'
+    content: '<div',
+    startPosition: 67,
+    endPosition: 70
   },
   {
     type: TOKEN_ATTRIBUTE_KEY,
-    content: 'some'
+    content: 'some',
+    startPosition: 72,
+    endPosition: 75
   },
   {
     type: TOKEN_ATTRIBUTE_ASSIGNMENT,
-    content: '='
+    content: '=',
+    startPosition: 76,
+    endPosition: 76
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
-    content: '"'
+    content: '"',
+    startPosition: 77,
+    endPosition: 77
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE,
-    content: 'attribute goes here'
+    content: 'attribute goes here',
+    startPosition: 78,
+    endPosition: 96
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
-    content: '"'
+    content: '"',
+    startPosition: 97,
+    endPosition: 97
   },
   {
     type: TOKEN_ATTRIBUTE_KEY,
-    content: 'and'
+    content: 'and',
+    startPosition: 99,
+    endPosition: 101
   },
   {
     type: TOKEN_ATTRIBUTE_ASSIGNMENT,
-    content: '='
+    content: '=',
+    startPosition: 102,
+    endPosition: 102
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE,
-    content: 'here'
+    content: 'here',
+    startPosition: 103,
+    endPosition: 106
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 107,
+    endPosition: 107
   },
   {
     type: TOKEN_TEXT,
@@ -95,7 +127,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</div>'
+    content: '</div>',
+    startPosition: 120,
+    endPosition: 125
   },
   {
     type: TOKEN_TEXT,

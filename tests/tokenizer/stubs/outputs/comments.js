@@ -35,11 +35,15 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<div'
+    content: '<div',
+    startPosition: 23,
+    endPosition: 26
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 27,
+    endPosition: 27
   },
   {
     type: TOKEN_TEXT,
@@ -49,11 +53,15 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<span'
+    content: '<span',
+    startPosition: 31,
+    endPosition: 35
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 36,
+    endPosition: 36
   },
   {
     type: TOKEN_TEXT,
@@ -87,7 +95,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</span>'
+    content: '</span>',
+    startPosition: 63,
+    endPosition: 69
   },
   {
     type: TOKEN_TEXT,
@@ -121,7 +131,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</div>'
+    content: '</div>',
+    startPosition: 102,
+    endPosition: 107
   },
   {
     type: TOKEN_TEXT,

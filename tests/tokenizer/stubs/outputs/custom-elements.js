@@ -8,11 +8,15 @@ const {
 module.exports = [
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<custom-one'
+    content: '<custom-one',
+    startPosition: 0,
+    endPosition: 10
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 11,
+    endPosition: 11
   },
   {
     type: TOKEN_TEXT,
@@ -22,11 +26,15 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<custom-two'
+    content: '<custom-two',
+    startPosition: 28,
+    endPosition: 38
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 39,
+    endPosition: 39
   },
   {
     type: TOKEN_TEXT,
@@ -36,7 +44,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</custom-two>'
+    content: '</custom-two>',
+    startPosition: 60,
+    endPosition: 72
   },
   {
     type: TOKEN_TEXT,
@@ -46,7 +56,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</custom-one>'
+    content: '</custom-one>',
+    startPosition: 74,
+    endPosition: 86
   },
   {
     type: TOKEN_TEXT,

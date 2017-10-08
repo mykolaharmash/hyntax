@@ -1,17 +1,7 @@
 const test = require('tape')
-const deepDiff = require('deep-diff')
 
 const parse = require('../../lib/parse')
-
-function getDiff (output, ast) {
-  const diff = deepDiff(output, ast)
-
-  if (diff !== undefined) {
-    console.log(JSON.stringify(diff, null, 2))
-  }
-
-  return diff
-}
+const getDiff = require('../test-helpers').getDiff
 
 test('Parser', (t) => {
   const input = require('./stubs/inputs/nested-tags')

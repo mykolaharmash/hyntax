@@ -40,14 +40,18 @@ module.exports = {
               content: [
                 {
                   type: TOKEN_ATTRIBUTE_KEY,
-                  content: "class"
+                  content: "class",
+                  startPosition: 404,
+                  endPosition: 408
                 },
                 {
                   type: ATTRIBUTE_VALUE_CONTEXT,
                   content: [
                     {
                       type: TOKEN_ATTRIBUTE_VALUE,
-                      content: "apostrophe-class"
+                      content: "apostrophe-class",
+                      startPosition: 411,
+                      endPosition: 424
                     }
                   ]
                 }
@@ -58,14 +62,18 @@ module.exports = {
               content: [
                 {
                   type: TOKEN_ATTRIBUTE_KEY,
-                  content: "custom-attr"
+                  content: "custom-attr",
+                  startPosition: 426,
+                  endPosition: 437
                 },
                 {
                   type: ATTRIBUTE_VALUE_CONTEXT,
                   content: [
                     {
                       type: TOKEN_ATTRIBUTE_VALUE,
-                      content: "attr-value"
+                      content: "attr-value",
+                      startPosition: 439,
+                      endPosition: 448
                     }
                   ]
                 }
@@ -86,7 +94,9 @@ module.exports = {
         },
         {
           type: TOKEN_CLOSE_TAG,
-          content: "</div>"
+          content: "</div>",
+          startPosition: 379,
+          endPosition: 383
         }
       ]
     },
@@ -147,7 +157,9 @@ module.exports = {
                           content: [
                             {
                               type: TOKEN_ATTRIBUTE_VALUE,
-                              content: "some thing"
+                              content: "some thing",
+                              startPosition: 531,
+                              endPosition: 540
                             }
                           ]
                         }
@@ -161,7 +173,9 @@ module.exports = {
                 },
                 {
                   type: TOKEN_CLOSE_TAG,
-                  content: "</some-component>"
+                  content: "</some-component>",
+                  startPosition: 543,
+                  endPosition: 562
                 },
               ]
             }
@@ -169,7 +183,9 @@ module.exports = {
         },
         {
           type: TOKEN_CLOSE_TAG,
-          content: "</div>"
+          content: "</div>",
+          startPosition: 567,
+          endPosition: 570
         }
       ]
     }

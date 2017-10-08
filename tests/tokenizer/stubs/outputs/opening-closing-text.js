@@ -14,15 +14,21 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<div'
+    content: '<div',
+    startPosition: 14,
+    endPosition: 17
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 18,
+    endPosition: 18
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</div>'
+    content: '</div>',
+    startPosition: 19,
+    endPosition: 24
   },
   {
     type: TOKEN_TEXT,

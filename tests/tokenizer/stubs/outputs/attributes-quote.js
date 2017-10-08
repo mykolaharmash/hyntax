@@ -13,11 +13,15 @@ const {
 module.exports = [
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<div'
+    content: '<div',
+    startPosition: 0,
+    endPosition: 3
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 4,
+    endPosition: 4
   },
   {
     type: TOKEN_TEXT,
@@ -27,51 +31,75 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<span'
+    content: '<span',
+    startPosition: 8,
+    endPosition: 12
   },
   {
     type: TOKEN_ATTRIBUTE_KEY,
-    content: 'class'
+    content: 'class',
+    startPosition: 14,
+    endPosition: 18
   },
   {
     type:  TOKEN_ATTRIBUTE_ASSIGNMENT,
-    content: '='
+    content: '=',
+    startPosition: 19,
+    endPosition: 19
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
-    content: '"'
+    content: '"',
+    startPosition: 20,
+    endPosition: 20
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE,
-    content: 'test class'
+    content: 'test class',
+    startPosition: 21,
+    endPosition: 30
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
-    content: '"'
+    content: '"',
+    startPosition: 31,
+    endPosition: 31
   },
   {
     type: TOKEN_ATTRIBUTE_KEY,
-    content: 'data-test'
+    content: 'data-test',
+    startPosition: 33,
+    endPosition: 41
   },
   {
     type:  TOKEN_ATTRIBUTE_ASSIGNMENT,
-    content: '='
+    content: '=',
+    startPosition: 42,
+    endPosition: 42
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
-    content: '"'
+    content: '"',
+    startPosition: 43,
+    endPosition: 43
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE,
-    content: 'data<test>'
+    content: 'data<test>',
+    startPosition: 44,
+    endPosition: 53
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
-    content: '"'
+    content: '"',
+    startPosition: 54,
+    endPosition: 54
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 55,
+    endPosition: 55
   },
   {
     type: TOKEN_TEXT,
@@ -81,11 +109,15 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<div'
+    content: '<div',
+    startPosition: 76,
+    endPosition: 79
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 80,
+    endPosition: 80
   },
   {
     type: TOKEN_TEXT,
@@ -95,51 +127,75 @@ module.exports = [
   },
   {
     type: TOKEN_OPEN_TAG_START,
-    content: '<custom-element'
+    content: '<custom-element',
+    startPosition: 108,
+    endPosition: 122
   },
   {
     type: TOKEN_ATTRIBUTE_KEY,
-    content: 'custom-attr'
+    content: 'custom-attr',
+    startPosition: 132,
+    endPosition: 142
   },
   {
     type: TOKEN_ATTRIBUTE_ASSIGNMENT,
-    content: '='
+    content: '=',
+    startPosition: 143,
+    endPosition: 143
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
-    content: '"'
+    content: '"',
+    startPosition: 144,
+    endPosition: 144
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE,
-    content: 'custom >test'
+    content: 'custom >test',
+    startPosition: 145,
+    endPosition: 156
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
-    content: '"'
+    content: '"',
+    startPosition: 157,
+    endPosition: 157
   },
   {
     type: TOKEN_ATTRIBUTE_KEY,
-    content: 'with-spaces'
+    content: 'with-spaces',
+    startPosition: 167,
+    endPosition: 177
   },
   {
     type: TOKEN_ATTRIBUTE_ASSIGNMENT,
-    content: '='
+    content: '=',
+    startPosition: 181,
+    endPosition: 181
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
-    content: '"'
+    content: '"',
+    startPosition: 184,
+    endPosition: 184
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE,
-    content: 'spaces test'
+    content: 'spaces test',
+    startPosition: 185,
+    endPosition: 195
   },
   {
     type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
-    content: '"'
+    content: '"',
+    startPosition: 196,
+    endPosition: 196
   },
   {
     type: TOKEN_OPEN_TAG_END,
-    content: '>'
+    content: '>',
+    startPosition: 204,
+    endPosition: 204
   },
   {
     type: TOKEN_TEXT,
@@ -149,7 +205,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</custom-element>'
+    content: '</custom-element>',
+    startPosition: 248,
+    endPosition: 264
   },
   {
     type: TOKEN_TEXT,
@@ -159,7 +217,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</div>'
+    content: '</div>',
+    startPosition: 270,
+    endPosition: 275
   },
   {
     type: TOKEN_TEXT,
@@ -169,7 +229,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</span>'
+    content: '</span>',
+    startPosition: 279,
+    endPosition: 285
   },
   {
     type: TOKEN_TEXT,
@@ -179,7 +241,9 @@ module.exports = [
   },
   {
     type: TOKEN_CLOSE_TAG,
-    content: '</div>'
+    content: '</div>',
+    startPosition: 287,
+    endPosition: 292
   },
   {
     type: TOKEN_TEXT,

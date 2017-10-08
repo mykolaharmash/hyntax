@@ -25,47 +25,67 @@ module.exports = [
   [
     {
       type: TOKEN_OPEN_TAG_START,
-      content: "<div"
+      content: "<div",
+      startPosition: 309,
+      endPosition: 402
     },
     {
       type: TOKEN_ATTRIBUTE_KEY,
-      content: "class"
+      content: "class",
+      startPosition: 404,
+      endPosition: 408
     },
     {
       type: TOKEN_ATTRIBUTE_ASSIGNMENT,
-      content: "="
+      content: "=",
+      startPosition: 409,
+      endPosition: 409
     },
   ],
   [
     {
       type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
-      content: "'"
+      content: "'",
+      startPosition: 410,
+      endPosition: 410
     },
     {
       type: TOKEN_ATTRIBUTE_VALUE,
-      content: "apostrophe-class"
+      content: "apostrophe-class",
+      startPosition: 411,
+      endPosition: 424
     },
     {
       type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
-      content: "'"
+      content: "'",
+      startPosition: 425,
+      endPosition: 425
     },
     {
       type: TOKEN_ATTRIBUTE_KEY,
-      content: "custom-attr"
+      content: "custom-attr",
+      startPosition: 426,
+      endPosition: 437
     },
     {
       type: TOKEN_ATTRIBUTE_ASSIGNMENT,
-      content: "="
+      content: "=",
+      startPosition: 438,
+      endPosition: 438
     },
     {
       type: TOKEN_ATTRIBUTE_VALUE,
-      content: "attr-value"
+      content: "attr-value",
+      startPosition: 439,
+      endPosition: 448
     },
   ],
   [
     {
       type: TOKEN_OPEN_TAG_END,
-      content: ">"
+      content: ">",
+      startPosition: 449,
+      endPosition: 449
     }
   ],
   [
@@ -77,7 +97,9 @@ module.exports = [
     },
     {
       type: TOKEN_CLOSE_TAG,
-      content: "</div>"
+      content: "</div>",
+      startPosition: 379,
+      endPosition: 383
     },
   ],
   [
@@ -117,11 +139,15 @@ module.exports = [
     },
     {
       type: TOKEN_OPEN_TAG_START,
-      content: "<div"
+      content: "<div",
+      startPosition: 410,
+      endPosition: 413
     },
     {
       type: TOKEN_OPEN_TAG_END,
-      content: ">"
+      content: ">",
+      startPosition: 414,
+      endPosition: 414
     }
   ],
   [
@@ -133,37 +159,53 @@ module.exports = [
     },
     {
       type: TOKEN_OPEN_TAG_START,
-      content: "<some-component"
+      content: "<some-component",
+      startPosition: 516,
+      endPosition: 528
     },
     {
       type: TOKEN_ATTRIBUTE_ASSIGNMENT,
-      content: "="
+      content: "=",
+      startPosition: 529,
+      endPosition: 529
     },
     {
       type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
-      content: "\""
+      content: "\"",
+      startPosition: 530,
+      endPosition: 530
     },
     {
       type: TOKEN_ATTRIBUTE_VALUE,
-      content: "some thing"
+      content: "some thing",
+      startPosition: 531,
+      endPosition: 540
     },
     {
       type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
-      content: "\""
+      content: "\"",
+      startPosition: 541,
+      endPosition: 541
     },
     {
       type: TOKEN_OPEN_TAG_END,
-      content: ">"
+      content: ">",
+      startPosition: 542,
+      endPosition: 542
     },
     {
       type: TOKEN_CLOSE_TAG,
-      content: "</some-component>"
+      content: "</some-component>",
+      startPosition: 543,
+      endPosition: 562
     },
   ],
   [
     {
       type: TOKEN_CLOSE_TAG,
-      content: "</div>"
+      content: "</div>",
+      startPosition: 567,
+      endPosition: 570
     }
   ]
 ]
