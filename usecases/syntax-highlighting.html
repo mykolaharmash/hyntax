@@ -1,0 +1,98 @@
+<html>
+  <head>
+
+    <style>
+      .tag {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <pre>
+      <div class="input" contenteditable="true" style="white-space: pre">
+        some code here
+      </div>
+    </pre>
+
+
+    <script src="./tokenize.bundle.js"></script>
+
+    <script>
+      function escapeHtml(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      const input = document.querySelector('.input')
+
+//      const range = document.createRange()
+//      const selection = window.getSelection()
+//
+//      range.setStart(input.firstChild, 4)
+//      range.setEnd(input.firstChild, 4)
+//
+//      selection.addRange(range)
+
+      const classesMap = {
+        'token:open-tag-start': 'tag',
+        'token:text': 'text'
+      }
+
+
+      input.addEventListener('input', (e) => {
+//        const selection = window.getSelection()
+//        const offset = selection.anchorOffset
+//        const rect = selection.getRangeAt(0).getBoundingClientRect()
+//
+//        selection.removeAllRanges()
+
+        console.log(input.innerText)
+
+        let renderedTokens = ''
+        const { tokens } = window.tokenize(input.innerText)
+
+        console.log(tokens)
+
+        let caret = 0
+
+        tokens.forEach((token) => {
+          const tail = input.innerText.substring(caret, token.startPosition)
+
+          renderedTokens += tail
+          renderedTokens += `<span>${ escapeHtml(token.content) }</span>`
+
+          caret = token.endPosition + 1
+        })
+
+        console.log(renderedTokens)
+
+        input.innerHTML = renderedTokens
+
+
+//        console.log(input.innerText)
+//        console.log(tokens)
+//
+//        tokens.forEach((token) => {
+//          const tokenClass = classesMap[token.type] || ''
+//          const content = escapeHtml(token.content)
+//
+//          renderedTokens += `<span class='${ tokenClass }'>${ content }</span>`
+//        })
+//
+//        input.innerHTML = renderedTokens
+
+//        const el = document.elementFromPoint(rect.x, rect.y)
+//        const range = document.createRange()
+//        range.setStart(el, offset);
+//        range.setEnd(el, offset);
+//
+//        selection.addRange(range)
+      })
+
+    </script>
+  </body>
+</html>
