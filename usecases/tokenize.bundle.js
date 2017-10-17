@@ -13,11 +13,6 @@ module.exports = {
 
 },{}],2:[function(require,module,exports){
 module.exports = {
-  SYMBOL_CONTENT_END: Symbol.for('symbol:content-end')
-}
-
-},{}],3:[function(require,module,exports){
-module.exports = {
   TOKEN_TEXT: 'token:text',
   TOKEN_OPEN_TAG_START: 'token:open-tag-start',
   TOKEN_ATTRIBUTE_KEY: 'token:attribute-key',
@@ -42,7 +37,7 @@ module.exports = {
 }
 
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 module.exports = {
   DATA_FACTORY: 'context-factory:data',
   OPEN_TAG_START_FACTORY: 'context-factory:open-tag-start',
@@ -69,7 +64,7 @@ module.exports = {
   COMMENT_END_FACTORY: 'context-factory:comment-end'
 }
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 const parserContexts = require('../lib/constants/parser-contexts')
 
 const parserContextTypes = Object.keys(parserContexts)
@@ -225,7 +220,7 @@ module.exports = {
   isWhitespace
 }
 
-},{"../lib/constants/parser-contexts":1}],6:[function(require,module,exports){
+},{"../lib/constants/parser-contexts":1}],5:[function(require,module,exports){
 let {
   addToken,
   update,
@@ -290,7 +285,7 @@ module.exports = function attributeKeyContextFactory (contextFactories, options)
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],7:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],6:[function(require,module,exports){
 const {
   addToken,
   update,
@@ -356,7 +351,7 @@ module.exports = function attributeKeyContextFactory (contextFactories, options)
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],8:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],7:[function(require,module,exports){
 const {
   addToken,
   update,
@@ -431,7 +426,7 @@ module.exports = function attributeValueBareContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],9:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],8:[function(require,module,exports){
 const {
   addToken,
   update,
@@ -500,7 +495,7 @@ module.exports = function attributeValueWrappedEndContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],10:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],9:[function(require,module,exports){
 let {
   addToken,
   update,
@@ -568,7 +563,7 @@ module.exports = function attributeValueWrappedStartContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],11:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],10:[function(require,module,exports){
 const {
   addToken,
   update,
@@ -637,7 +632,7 @@ module.exports = function attributeValueWrappedContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],12:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],11:[function(require,module,exports){
 let { update } = require('../helpers')
 
 const {
@@ -741,7 +736,7 @@ module.exports = function attributeValueContextFactory (contextFactories, option
   }
 }
 
-},{"../constants/tokenizer-context-factories":4,"../helpers":5}],13:[function(require,module,exports){
+},{"../constants/tokenizer-context-factories":3,"../helpers":4}],12:[function(require,module,exports){
 const { update } = require('../helpers')
 
 const {
@@ -849,7 +844,7 @@ module.exports = function attributesContextFactory (
   }
 }
 
-},{"../constants/tokenizer-context-factories":4,"../helpers":5}],14:[function(require,module,exports){
+},{"../constants/tokenizer-context-factories":3,"../helpers":4}],13:[function(require,module,exports){
 const {
   addToken,
   update,
@@ -933,7 +928,7 @@ module.exports = function closeTagContextFactory (contextFactories, options) {
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],15:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],14:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -1011,7 +1006,7 @@ module.exports = function commentContentContextFactory (contextFactories, option
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],16:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],15:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -1079,7 +1074,7 @@ module.exports = function commentEndContextFactory (contextFactories, options) {
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],17:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],16:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -1160,7 +1155,7 @@ module.exports = function commentStartContextFactory (contextFactories, options)
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],18:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],17:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -1294,12 +1289,6 @@ function handleDataContextContentEnd (state, tokens) {
   const textContent = `${ state.accumulatedContent }${ state.decisionBuffer }`
 
   if (textContent.length !== 0) {
-    // Move the caret back as at this point
-    // we are standing on SYMBOL_END_CONTENT
-    // and it should not be taken into account
-    // when calculating characters range
-    updatedState = update(state, { caretPosition: state.caretPosition - 1 })
-
     const range = calculateTokenCharactersRange(updatedState, { keepBuffer: false })
 
     updatedTokens = addToken(tokens, {
@@ -1384,7 +1373,7 @@ module.exports = function dataContextFactory (contextFactories, options) {
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],19:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],18:[function(require,module,exports){
 const {
   addToken,
   update,
@@ -1454,7 +1443,7 @@ module.exports = function doctypeAttributeBareContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],20:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],19:[function(require,module,exports){
 let { addToken, update, calculateTokenCharactersRange } = require('../helpers')
 
 const {
@@ -1519,7 +1508,7 @@ module.exports = function doctypeAttributeWrappedEndContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],21:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],20:[function(require,module,exports){
 let { addToken, update, calculateTokenCharactersRange } = require('../helpers')
 
 const {
@@ -1583,7 +1572,7 @@ module.exports = function doctypeAttributeWrappedStartContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],22:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],21:[function(require,module,exports){
 let { addToken, update, calculateTokenCharactersRange } = require('../helpers')
 
 const {
@@ -1648,7 +1637,7 @@ module.exports = function doctypeAttributeWrappedContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],23:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],22:[function(require,module,exports){
 const { update, isWhitespace } = require('../helpers')
 
 const {
@@ -1758,7 +1747,7 @@ module.exports = function doctypeAttributesContextFactory (
   }
 }
 
-},{"../constants/tokenizer-context-factories":4,"../helpers":5}],24:[function(require,module,exports){
+},{"../constants/tokenizer-context-factories":3,"../helpers":4}],23:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -1824,7 +1813,7 @@ module.exports = function doctypeEndContextFactory (contextFactories, options) {
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],25:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],24:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -1926,7 +1915,7 @@ module.exports = function doctypeStartContextFactory (contextFactories, options)
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],26:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],25:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -2026,7 +2015,7 @@ module.exports = function openTagEndContextFactory (contextFactories, options) {
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],27:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],26:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -2268,7 +2257,7 @@ module.exports = function openTagStartContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],28:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],27:[function(require,module,exports){
 const {
   update,
   addToken,
@@ -2356,7 +2345,7 @@ module.exports = function scriptTagContentContextFactory (
   }
 }
 
-},{"../constants/token-types":3,"../constants/tokenizer-context-factories":4,"../helpers":5}],29:[function(require,module,exports){
+},{"../constants/token-types":2,"../constants/tokenizer-context-factories":3,"../helpers":4}],28:[function(require,module,exports){
 const dataContextFactory = require('./tokenize-contexts/data.factory')
 const openTagStartContextFactory = require('./tokenize-contexts/open-tag-start.factory')
 const closeTagContextFactory = require('./tokenize-contexts/close-tag.factory')
@@ -2381,7 +2370,6 @@ const commentStartContextFactory = require('./tokenize-contexts/comment-start.fa
 const commentContentContextFactory = require('./tokenize-contexts/comment-content.factory')
 const commentEndContextFactory = require('./tokenize-contexts/comment-end.factory')
 
-const { SYMBOL_CONTENT_END } = require('./constants/symbols')
 const {
   DATA_FACTORY,
   OPEN_TAG_START_FACTORY,
@@ -2434,8 +2422,8 @@ const contextFactoriesMap = {
   [COMMENT_END_FACTORY]: commentEndContextFactory
 }
 
-function handleSyntaxForChar (context, state, tokens) {
-  const syntaxHandler = context.parseSyntax(state.decisionBuffer)
+function handleSyntaxForBuffer (state, tokens) {
+  const syntaxHandler = state.currentContext.parseSyntax(state.decisionBuffer)
 
   if (syntaxHandler) {
     return syntaxHandler(state, tokens)
@@ -2444,58 +2432,55 @@ function handleSyntaxForChar (context, state, tokens) {
   return undefined
 }
 
-function handleContentEnd (context, state, tokens) {
-  if (context.handleContentEnd) {
-    return context.handleContentEnd(state, tokens)
+function handleContentEnd (state, tokens) {
+  if (state.currentContext.handleContentEnd) {
+    return state.currentContext.handleContentEnd(state, tokens)
   }
 
   return undefined
 }
 
 
-function tokenizeChars (chars, state, tokens, positionOffset) {
+function tokenizeChars (
+  chars,
+  state,
+  tokens,
+  { isFinalChunk, positionOffset }
+) {
   let updatedState = Object.assign({}, state)
   let updatedTokens = tokens
   let charIndex = updatedState.caretPosition - positionOffset
 
   while (charIndex < chars.length) {
-    const char = chars[charIndex]
-    let currentContext = updatedState.currentContext
+    updatedState.decisionBuffer += chars[charIndex]
 
-    if (char === SYMBOL_CONTENT_END) {
-      let handlerResult = handleContentEnd(
-        currentContext,
-        updatedState,
-        tokens
-      )
+    let handlerResult = handleSyntaxForBuffer(updatedState, tokens)
 
-      if (handlerResult !== undefined) {
-        updatedState = handlerResult.updatedState
-        updatedTokens = handlerResult.updatedTokens
-      }
-
-      break
+    if (handlerResult === undefined) {
+      updatedState.accumulatedContent += updatedState.decisionBuffer
+      updatedState.decisionBuffer = ''
     } else {
-      updatedState.decisionBuffer += char
-
-      let handlerResult = handleSyntaxForChar(
-        currentContext,
-        updatedState,
-        tokens
-      )
-
-      if (handlerResult === undefined) {
-        updatedState.accumulatedContent += updatedState.decisionBuffer
-        updatedState.decisionBuffer = ''
-      } else {
-        updatedState = handlerResult.updatedState
-        updatedTokens = handlerResult.updatedTokens
-      }
-
-      updatedState.caretPosition++
+      updatedState = handlerResult.updatedState
+      updatedTokens = handlerResult.updatedTokens
     }
 
+    updatedState.caretPosition++
     charIndex = updatedState.caretPosition - positionOffset
+  }
+
+  if (isFinalChunk) {
+    // Move the caret back, as at this point
+    // it in the position outside of chars array,
+    // and it should not be taken into account
+    // when calculating characters range
+    updatedState.caretPosition--
+
+    let handlerResult = handleContentEnd(updatedState, tokens)
+
+    if (handlerResult !== undefined) {
+      updatedState = handlerResult.updatedState
+      updatedTokens = handlerResult.updatedTokens
+    }
   }
 
   return { updatedState, updatedTokens }
@@ -2510,11 +2495,6 @@ function tokenize (
   positionOffset = positionOffset === undefined ? 0 : positionOffset
 
   const chars = [...content]
-
-  if (isFinalChunk) {
-    chars.push(SYMBOL_CONTENT_END)
-  }
-
   const state = existingState || {
     currentContext: dataContextFactory(contextFactoriesMap),
     decisionBuffer: '',
@@ -2523,7 +2503,9 @@ function tokenize (
   }
   const tokens = []
 
-  const result = tokenizeChars(chars, state, tokens, positionOffset)
+  const result = tokenizeChars(chars, state, tokens, {
+    isFinalChunk, positionOffset
+  })
 
   return {
     state: result.updatedState,
@@ -2533,8 +2515,4 @@ function tokenize (
 
 module.exports = tokenize
 
-if (window) {
-  window.tokenize = tokenize
-}
-
-},{"./constants/symbols":2,"./constants/tokenizer-context-factories":4,"./tokenize-contexts/attribute-assignment.factory":6,"./tokenize-contexts/attribute-key.factory":7,"./tokenize-contexts/attribute-value-bare.factory":8,"./tokenize-contexts/attribute-value-wrapped-end.factory":9,"./tokenize-contexts/attribute-value-wrapped-start.factory":10,"./tokenize-contexts/attribute-value-wrapped.factory":11,"./tokenize-contexts/attribute-value.factory":12,"./tokenize-contexts/attributes.factory":13,"./tokenize-contexts/close-tag.factory":14,"./tokenize-contexts/comment-content.factory":15,"./tokenize-contexts/comment-end.factory":16,"./tokenize-contexts/comment-start.factory":17,"./tokenize-contexts/data.factory":18,"./tokenize-contexts/doctype-attribute-bare.factory":19,"./tokenize-contexts/doctype-attribute-wrapped-end.factory":20,"./tokenize-contexts/doctype-attribute-wrapped-start.factory":21,"./tokenize-contexts/doctype-attribute-wrapped.factory":22,"./tokenize-contexts/doctype-attributes.factory":23,"./tokenize-contexts/doctype-end.factory":24,"./tokenize-contexts/doctype-start.factory":25,"./tokenize-contexts/open-tag-end.factory":26,"./tokenize-contexts/open-tag-start.factory":27,"./tokenize-contexts/script-tag-content.factory":28}]},{},[29]);
+},{"./constants/tokenizer-context-factories":3,"./tokenize-contexts/attribute-assignment.factory":5,"./tokenize-contexts/attribute-key.factory":6,"./tokenize-contexts/attribute-value-bare.factory":7,"./tokenize-contexts/attribute-value-wrapped-end.factory":8,"./tokenize-contexts/attribute-value-wrapped-start.factory":9,"./tokenize-contexts/attribute-value-wrapped.factory":10,"./tokenize-contexts/attribute-value.factory":11,"./tokenize-contexts/attributes.factory":12,"./tokenize-contexts/close-tag.factory":13,"./tokenize-contexts/comment-content.factory":14,"./tokenize-contexts/comment-end.factory":15,"./tokenize-contexts/comment-start.factory":16,"./tokenize-contexts/data.factory":17,"./tokenize-contexts/doctype-attribute-bare.factory":18,"./tokenize-contexts/doctype-attribute-wrapped-end.factory":19,"./tokenize-contexts/doctype-attribute-wrapped-start.factory":20,"./tokenize-contexts/doctype-attribute-wrapped.factory":21,"./tokenize-contexts/doctype-attributes.factory":22,"./tokenize-contexts/doctype-end.factory":23,"./tokenize-contexts/doctype-start.factory":24,"./tokenize-contexts/open-tag-end.factory":25,"./tokenize-contexts/open-tag-start.factory":26,"./tokenize-contexts/script-tag-content.factory":27}]},{},[28]);

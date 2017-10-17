@@ -2,23 +2,43 @@
   <head>
 
     <style>
+      body {
+        display: flex;
+        font-size: 18px;
+      }
+
+      .text,
+      .attribute-key {
+        color: #BABABA;
+      }
+
       .tag {
-        color: red;
+        color: #E8BF6A;
+      }
+
+      .attribute-value {
+        color: #A5C261;
+      }
+
+      .input {
+        margin-right: 100px;
+        padding: 20px 24px;
+      }
+
+      .output {
+        background-color: #2B2B2B;
+        padding: 20px 24px;
       }
     </style>
   </head>
   <body>
-    <pre>
-      <div class="input" contenteditable="true" style="white-space: pre">
-        some code here
-      </div>
-    </pre>
-
+    <pre class="input"></pre>
+    <pre class="output"></pre>
 
     <script src="./tokenize.bundle.js"></script>
 
     <script>
-      function escapeHtml(unsafe) {
+      function escapeHtml (unsafe) {
         return unsafe
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
@@ -27,71 +47,56 @@
           .replace(/'/g, "&#039;");
       }
 
+      const html = `
+some text
+
+<p class="description">
+  some
+  more text
+</p>
+
+<form class="test-form">
+  <input type="input" disabled value="Disabled input">
+
+  <input type="email" placeholder="Your Email">
+  <button type="submit">Submit</button>
+</form>
+
+<img src="./test-image.png" />
+      `
+
       const input = document.querySelector('.input')
-
-//      const range = document.createRange()
-//      const selection = window.getSelection()
-//
-//      range.setStart(input.firstChild, 4)
-//      range.setEnd(input.firstChild, 4)
-//
-//      selection.addRange(range)
-
+      const output = document.querySelector('.output')
       const classesMap = {
         'token:open-tag-start': 'tag',
-        'token:text': 'text'
+        'token:text': 'text',
+        'token:attribute-key': 'attribute-key',
+        'token:attribute-assignment': 'attribute-key',
+        'token:attribute-value-wrapper-start': 'attribute-value',
+        'token:attribute-value-wrapper-end': 'attribute-value',
+        'token:attribute-value': 'attribute-value',
+        'token:open-tag-end': 'tag',
+        'token:close-tag': 'tag'
       }
 
+      input.textContent = html.trim()
 
-      input.addEventListener('input', (e) => {
-//        const selection = window.getSelection()
-//        const offset = selection.anchorOffset
-//        const rect = selection.getRangeAt(0).getBoundingClientRect()
-//
-//        selection.removeAllRanges()
+      const { tokens } = window.tokenize(input.innerText)
 
-        console.log(input.innerText)
+      let renderedTokens = ''
+      let caret = 0
 
-        let renderedTokens = ''
-        const { tokens } = window.tokenize(input.innerText)
+      tokens.forEach((token) => {
+        const tail = input.innerText.substring(caret, token.startPosition)
+        const tokenClass = classesMap[token.type] || ''
 
-        console.log(tokens)
+        renderedTokens += tail
+        renderedTokens += `<span class="${ tokenClass }">${ escapeHtml(token.content) }</span>`
 
-        let caret = 0
-
-        tokens.forEach((token) => {
-          const tail = input.innerText.substring(caret, token.startPosition)
-
-          renderedTokens += tail
-          renderedTokens += `<span>${ escapeHtml(token.content) }</span>`
-
-          caret = token.endPosition + 1
-        })
-
-        console.log(renderedTokens)
-
-        input.innerHTML = renderedTokens
-
-
-//        console.log(input.innerText)
-//        console.log(tokens)
-//
-//        tokens.forEach((token) => {
-//          const tokenClass = classesMap[token.type] || ''
-//          const content = escapeHtml(token.content)
-//
-//          renderedTokens += `<span class='${ tokenClass }'>${ content }</span>`
-//        })
-//
-//        input.innerHTML = renderedTokens
-
-//        const el = document.elementFromPoint(rect.x, rect.y)
-//        const range = document.createRange()
-//        range.setStart(el, offset);
-//        range.setEnd(el, offset);
-//
-//        selection.addRange(range)
+        caret = token.endPosition + 1
       })
+
+      output.innerHTML = renderedTokens
 
     </script>
   </body>
