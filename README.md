@@ -1,6 +1,6 @@
 # Hyntax
 
-Simple HTML parser and tokenizer.
+Simple HTML tokenizer and parser .
 
 __Not base on regexps.__ It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).  
 __Supports streaming.__ Can tokenize and parse HTML in chunks, meaning it can handle memory-sensitive scenarios.  
@@ -125,7 +125,7 @@ Default value — ```0```
 
 ##### Returns
 
-Function returns an object with ```state<Object>``` and ```tokens<Array>``` properties. 
+Tokenizer returns an object with ```state<Object>``` and ```tokens<Array>``` properties. 
 
 ```state<Object>```
 
