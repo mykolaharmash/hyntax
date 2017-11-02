@@ -1,6 +1,6 @@
 {
   "name": "hyntax",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simple HTML tokenizer and parser",
   "main": "generate.js",
   "scripts": {
