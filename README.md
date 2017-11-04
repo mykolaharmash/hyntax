@@ -6,6 +6,8 @@ __Not base on regexps.__ It's a legit [parser](https://en.wikipedia.org/wiki/Par
 __Supports streaming.__ Can tokenize and parse HTML in chunks, meaning it can handle memory-sensitive scenarios.  
 __Zero dependency.__ Hyntax is written from scratch as a case-study. You can read about how it works in [my blog post](https://nikgarmash.com).
 
+
+
 ## Usage
 
 ```javascript
@@ -26,6 +28,8 @@ const { ast } = parse(tokens)
 console.log(tokens, ast)
 ```
 
+
+
 ## Usage in Browser
 
 You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify. Single Node.js specific piece of code is native Node's streams. All mentioned bundlers have a client-side replacement for stream.
@@ -39,6 +43,8 @@ import parse from 'hyntax/lib/parse'
 import TokenizeStream from 'hyntax/lib/tokenize-stream'
 import ParseStream from 'hyntax/lib/parse-stream'
 ```
+
+
 
 ## Streaming
 
@@ -72,87 +78,99 @@ https.get('https://www.wikipedia.org', (res) => {
 })
 ```
 
+
+
 ## Tokenizer
 
-Hyntax has tokenizer as a separate module, you can use output tokens on their own or pass them further to a parser to build an AST. You can use default Hyntax parser or write a custom one which builds AST for some specific need.
-
-#### Types of tokens
-
-Each token has a `type` property. All possible values of this field you can 
-find in a [lib/constants/token-types.js](https://github.com/).
-
-Here is high level overview of all possible tokens.
-
-![Overview of all possible tokens](./tokens-list.png)
+Hyntax has tokenizer as a separate module. You can use generated tokens on their own or pass them further to a parser to build an AST. You can use default Hyntax parser or write a custom one which builds AST for some specific need.
 
 #### Interface
 
 ```javascript
-tokenize(input, [existingState], [options])
+tokenize(input<String>, [existingState<Object>], [options<Object>])
 ```
 
-##### Arguments
-For basic usage ```input``` argument is sufficient, all other arguments are 
-optional and needed only for stream parsing.
+For basic usage ```input``` argument is sufficient. 
 
-```input<String>```
+All other arguments are needed only for stream parsing and being used internaly by ```TokenizeStream```  class. You should warry about those only if you're going to have a custom stream implementation.
 
-HTML string to process
+#### Arguments
 
-```existingState<Object>```
+* ```input```
 
-When input is coming in chunks and multiple calls of ```tokenize(chunk)``` are required, existingState parameter is used to pass result of previous call.
-
-Default value — ```undefined```.
-
-```options<Object>```
-
-```options.isFinalChunk<Boolean>```
-
-Signal that current input chunk is the last one. Used for creating of the last 
-token which does not have explicit ending. For example when input is 
-interrupted in the middle of a tag content without reaching closing tag.
-
-Default value — ```true```  
-
-```options.positionOffset<Number>```
-
-Number of characters processed by previous ```tokenize(chunk)``` calls. 
-Needed for correct calculation of tokens position when input is coming in 
-chunks.
-
-Default value — ```0```  
-
-##### Returns
-
-Tokenizer returns an object with ```state<Object>``` and ```tokens<Array>``` properties. 
-
-```state<Object>```
-
-Is the current state of tokenizer. It can be persist and passed to the next tokenizer call if input is coming in chunks.
-
-```tokens<Array>```
-
-Each item of the array is a ```token<Object>```.
-
-```token.type<String>```
-
-One of the types from [lib/constants/token-types.js](https://github.com/).
-
-```token.content<String>```
-
-Piece of original HTML input which was recognized as a token.
-
-```token.startPosition<Number>```
-
-Index of the first token's character in the input HTML string.
-
-```token.endPosition<Number>```
-
-Index of the last token's character in the input HTML string.
+  HTML string to process
 
 
+* ```existingState```
+
+  When input is coming in chunks and multiple calls of ```tokenize(chunk)``` are required, ```existingState``` parameter is used to pass result of previous call.
+
+  Default value — ```undefined```.
+
+* ```options.isFinalChunk<Boolean>```
+
+  Signal that current input chunk is the last one. Used for creating of the last token which does not have explicit ending. For example when input is interrupted in the middle of a tag content without reaching closing tag.
+
+  Default value — ```true```  
+
+* ```options.positionOffset<Number>```
+
+  Number of characters processed by previous ```tokenize(chunk)``` calls. 
+  Needed for correct calculation of tokens position when input is coming in 
+  chunks.
+
+  Default value — ```0```  
+
+#### Returns
+
+```javascript
+tokenize(input) -> { state<Object>, tokens<Array> }
+```
+
+* ```state```
+
+  Is the current state of tokenizer. It can be persist and passed to the next tokenizer call if input is coming in chunks.
+
+* ```tokens<Array>```
+
+  Array of resulting tokens.
+
+#### Types of tokens
+
+Here is a high level overview of all possible tokens.
+
+![Overview of all possible tokens](./tokens-list.png)
+
+#### Token object
+
+Each token is an object with several properties
+
+```javascript
+{
+  type: <String>,
+  content: <String>,
+  startPosition: <Number>,
+  endPosition: <Number>
+}
+```
+
+* ```type```
+
+  One of the type constants from [lib/constants/token-types.js](https://github.com/).
+
+* ```content```
+
+  Piece of original HTML input which was recognized as a token.
+
+* ```startPosition```
+
+  Index of a character in the input HTML string where token starts.
+
+* ```endPosition```
+
+  Index of a character in the input HTML string where token ends.
 
 
 
+## Parser
 
