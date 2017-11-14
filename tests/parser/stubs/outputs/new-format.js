@@ -36,7 +36,6 @@ module.exports = {
             endPosition: 4
           },
           selfClosing: false,
-          attributes: [],
           children: [
             {
               nodeType: TEXT,
@@ -53,6 +52,7 @@ module.exports = {
               nodeType: TAG,
               content: {
                 name: 'span',
+                selfClosing: false,
                 openStart: {
                   type: TOKEN_OPEN_TAG_START,
                   content: '<span',
@@ -92,10 +92,7 @@ module.exports = {
                       content: 'disabled',
                       startPosition: 33,
                       endPosition: 41
-                    },
-                    value: undefined,
-                    openWrapper: undefined,
-                    closeWrapper: undefined
+                    }
                   }
                 ],
                 openEnd: {
@@ -120,6 +117,7 @@ module.exports = {
                     nodeType: TAG,
                     content: {
                       name: 'span',
+                      selfClosing: false,
                       openStart: {
                         type: TOKEN_OPEN_TAG_START,
                         content: '<span',
@@ -132,7 +130,6 @@ module.exports = {
                         startPosition: 38,
                         endPosition: 38
                       },
-                      attributes: [],
                       children: [
                         {
                           nodeType: TEXT,

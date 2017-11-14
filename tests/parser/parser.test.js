@@ -2,6 +2,7 @@ const test = require('tape')
 
 const parse = require('../../lib/parse')
 const getDiff = require('../test-helpers').getDiff
+const clearAst = require('../../lib/helpers').clearAst
 const util = require('util')
 
 function nestedTags (t) {
@@ -19,12 +20,9 @@ function newFormat (t) {
   const output = require('./stubs/outputs/new-format')
 
   const { ast } = parse(input)
+  const diff = getDiff(output, clearAst(ast))
 
-  console.log(util.inspect(ast, { showHidden: true, depth: null }))
-
-  //const diff = getDiff(output, ast)
-
-  //t.equal(diff, undefined, 'New Format')
+  t.equal(diff, undefined, 'New Format')
 }
 
 test('Parser', (t) => {
