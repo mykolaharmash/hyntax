@@ -11,11 +11,16 @@ function getDiff (output, ast) {
   return diff
 }
 
+function inspect (obj) {
+  return util.inspect(obj, { showHidden: false, depth: null })
+}
+
 function logAst (ast) {
-  console.log(util.inspect(ast, { showHidden: false, depth: null }))
+  console.log(inspect(ast))
 }
 
 module.exports = {
   getDiff,
-  logAst
+  logAst,
+  inspect
 }

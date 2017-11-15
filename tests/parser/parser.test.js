@@ -1,7 +1,9 @@
 const test = require('tape')
+const fs = require('fs')
 
+const tokenize = require('../../lib/tokenize')
 const parse = require('../../lib/parse')
-const getDiff = require('../test-helpers').getDiff
+const { getDiff, inspect } = require('../test-helpers')
 const { clearAst } = require('../../lib/helpers')
 
 function nestedTags (t) {
@@ -24,6 +26,16 @@ function attributes (t) {
   t.equal(diff, undefined, 'Attributes')
 }
 
+function comments (t) {
+  const { inputTokens } = require('./stubs/inputs/comments')
+  const output = require('./stubs/outputs/comments')
+
+  const { ast } = parse(inputTokens)
+  const diff = getDiff(output, clearAst(ast))
+
+  t.equal(diff, undefined, 'Comments')
+}
+
 function doctypes (t) {
   const input = require('./stubs/inputs/doctypes')
   const output = require('./stubs/outputs/doctypes')
@@ -38,6 +50,7 @@ function doctypes (t) {
 test('Parser', (t) => {
   nestedTags(t)
   attributes(t)
+  comments(t)
   doctypes(t)
 
   t.end()
