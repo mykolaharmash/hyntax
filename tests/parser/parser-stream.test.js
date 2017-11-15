@@ -1,20 +1,11 @@
 const test = require('tape')
-const deepDiff = require('deep-diff')
 
 const ParseStream = require('../../lib/parse-stream')
 
-const inputChunks = require('./stubs/inputs/stream')
+const { clearAst } = require('../../lib/helpers')
+const { inputChunks } = require('./stubs/inputs/stream')
 const outputAst = require('./stubs/outputs/stream')
-
-function getDiff (output, ast) {
-  const diff = deepDiff(output, ast)
-
-  if (diff !== undefined) {
-    console.log(JSON.stringify(diff, null, 2))
-  }
-
-  return diff
-}
+const { getDiff } = require('../test-helpers')
 
 test('Stream Parser', (t) => {
   const parseStream = new ParseStream()
@@ -31,7 +22,7 @@ test('Stream Parser', (t) => {
   parseStream.end()
 
   parseStream.on('finish', () => {
-    const diff = getDiff(outputAst, ast)
+    const diff = getDiff(outputAst, clearAst(ast))
 
     t.equal(diff, undefined, 'Builds AST from Chunks')
     t.end()

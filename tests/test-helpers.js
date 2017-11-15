@@ -1,4 +1,5 @@
 const deepDiff = require('deep-diff')
+const util = require('util')
 
 function getDiff (output, ast) {
   const diff = deepDiff(output, ast)
@@ -10,6 +11,11 @@ function getDiff (output, ast) {
   return diff
 }
 
+function logAst (ast) {
+  console.log(util.inspect(ast, { showHidden: false, depth: null }))
+}
+
 module.exports = {
-  getDiff
+  getDiff,
+  logAst
 }

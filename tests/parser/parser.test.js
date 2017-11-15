@@ -1,9 +1,6 @@
 const test = require('tape')
-const util = require('util')
-const fs = require('fs')
 
 const parse = require('../../lib/parse')
-const tokenize = require('../../lib/tokenize')
 const getDiff = require('../test-helpers').getDiff
 const { clearAst } = require('../../lib/helpers')
 
