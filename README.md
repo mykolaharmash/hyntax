@@ -4,8 +4,8 @@ Simple HTML tokenizer and parser .
 
 __Not base on regexps.__ It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).  
 __Supports streaming.__ Can tokenize and parse HTML in chunks, meaning it can handle memory-sensitive scenarios.  
-__Zero dependency.__ Hyntax is written from scratch as a case-study. You can read about how it works in [my blog post](https://nikgarmash.com).
-
+__Zero dependency.__ Hyntax is written from scratch as a case-study. You can read about how it works in [my blog post](https://nikgarmash.com).  
+__Both Node.js and browser.__
 
 
 ## Usage
