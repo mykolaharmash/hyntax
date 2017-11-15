@@ -21,13 +21,13 @@ const testCases = {
     input: fs.readFileSync(require.resolve('./stubs/inputs/script-elements.html'), 'utf8'),
     output: require('./stubs/outputs/script-elements')
   },
+  'Script elements with attributes': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/script-elements-attributes.html'), 'utf8'),
+    output: require('./stubs/outputs/script-elements-attributes')
+  },
   'Attributes (quotes)': {
     input: fs.readFileSync(require.resolve('./stubs/inputs/attributes-quote.html'), 'utf8'),
     output: require('./stubs/outputs/attributes-quote')
-  },
-  'Script elements attributes (quotes)': {
-    input: fs.readFileSync(require.resolve('./stubs/inputs/script-elements-attributes-quote.html'), 'utf8'),
-    output: require('./stubs/outputs/script-elements-attribute-quote')
   },
   'Doctype': {
     input: fs.readFileSync(require.resolve('./stubs/inputs/doctypes.html'), 'utf8'),
@@ -36,6 +36,14 @@ const testCases = {
   'Comments': {
     input: fs.readFileSync(require.resolve('./stubs/inputs/comments.html'), 'utf8'),
     output: require('./stubs/outputs/comments')
+  },
+  'Style elements': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/style-elements.html'), 'utf8'),
+    output: require('./stubs/outputs/style-elements')
+  },
+  'Style elements with attributes': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/style-elements-attributes.html'), 'utf8'),
+    output: require('./stubs/outputs/style-elements-attributes')
   }
 }
 

@@ -92,7 +92,7 @@ tokenize(input<String>, [existingState<Object>], [options<Object>])
 
 For basic usage ```input``` argument is sufficient. 
 
-All other arguments are needed only for stream parsing and being used internaly by ```TokenizeStream```  class. You should warry about those only if you're going to have a custom stream implementation.
+All other arguments are needed only for stream parsing and being used internaly by ```TokenizeStream```  class. You should worry about those only if you're going to have a custom stream implementation.
 
 #### Arguments
 

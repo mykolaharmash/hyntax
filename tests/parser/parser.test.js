@@ -1,9 +1,7 @@
 const test = require('tape')
-const fs = require('fs')
 
-const tokenize = require('../../lib/tokenize')
 const parse = require('../../lib/parse')
-const { getDiff, inspect } = require('../test-helpers')
+const { getDiff } = require('../test-helpers')
 const { clearAst } = require('../../lib/helpers')
 
 function nestedTags (t) {
