@@ -10,17 +10,17 @@ const {
 } = require('../../../../lib/constants/token-types')
 
 const {
-  DOCUMENT,
-  TAG,
-  TEXT
+  NODE_DOCUMENT,
+  NODE_TAG,
+  NODE_TEXT
 } = require('../../../../lib/constants/ast-nodes')
 
 module.exports = {
-  nodeType: DOCUMENT,
+  nodeType: NODE_DOCUMENT,
   content: {
     children: [
       {
-        nodeType: TAG,
+        nodeType: NODE_TAG,
         content: {
           name: 'div',
           openStart: {
@@ -38,7 +38,7 @@ module.exports = {
           selfClosing: false,
           children: [
             {
-              nodeType: TEXT,
+              nodeType: NODE_TEXT,
               content: {
                 value: {
                   type: TOKEN_TEXT,
@@ -49,7 +49,7 @@ module.exports = {
               }
             },
             {
-              nodeType: TAG,
+              nodeType: NODE_TAG,
               content: {
                 name: 'span',
                 selfClosing: false,
@@ -73,13 +73,13 @@ module.exports = {
                       startPosition: 21,
                       endPosition: 30
                     },
-                    openWrapper: {
+                    startWrapper: {
                       type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_START,
                       content: '"',
                       startPosition: 20,
                       endPosition: 20
                     },
-                    closeWrapper: {
+                    endWrapper: {
                       type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
                       content: '"',
                       startPosition: 31,
@@ -103,7 +103,7 @@ module.exports = {
                 },
                 children: [
                   {
-                    nodeType: TEXT,
+                    nodeType: NODE_TEXT,
                     content: {
                       value: {
                         type: TOKEN_TEXT,
@@ -114,7 +114,7 @@ module.exports = {
                     }
                   },
                   {
-                    nodeType: TAG,
+                    nodeType: NODE_TAG,
                     content: {
                       name: 'span',
                       selfClosing: false,
@@ -132,7 +132,7 @@ module.exports = {
                       },
                       children: [
                         {
-                          nodeType: TEXT,
+                          nodeType: NODE_TEXT,
                           content: {
                             value: {
                               type: TOKEN_TEXT,
@@ -152,7 +152,7 @@ module.exports = {
                     }
                   },
                   {
-                    nodeType: TEXT,
+                    nodeType: NODE_TEXT,
                     content: {
                       value: {
                         type: TOKEN_TEXT,
@@ -172,7 +172,7 @@ module.exports = {
               }
             },
             {
-              nodeType: TEXT,
+              nodeType: NODE_TEXT,
               content: {
                 value: {
                   type: TOKEN_TEXT,
@@ -192,7 +192,7 @@ module.exports = {
         }
       },
       {
-        nodeType: TEXT,
+        nodeType: NODE_TEXT,
         content: {
           value: {
             type: TOKEN_TEXT,

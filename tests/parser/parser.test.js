@@ -25,9 +25,23 @@ function newFormat (t) {
   t.equal(diff, undefined, 'New Format')
 }
 
+function doctypes (t) {
+  const input = require('./stubs/inputs/doctypes')
+  const output = require('./stubs/outputs/doctypes')
+
+  const { ast } = parse(input)
+
+  //console.log(util.inspect(clearAst(ast), { showHidden: false, depth: null }))
+
+  const diff = getDiff(output, clearAst(ast))
+
+  t.equal(diff, undefined, 'Doctypes')
+}
+
 test('Parser', (t) => {
   //nestedTags(t)
-  newFormat(t)
+  //newFormat(t)
+  doctypes(t)
 
   t.end()
 })
