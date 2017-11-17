@@ -17,8 +17,10 @@
   "devDependencies": {
     "browserify": "^14.4.0",
     "deep-diff": "^0.3.8",
+    "eslint": "^4.11.0",
     "posthtml-parser": "^0.2.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0"
-  }
+  },
+  "dependencies": {}
 }
