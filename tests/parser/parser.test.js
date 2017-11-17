@@ -45,11 +45,35 @@ function doctypes (t) {
   t.equal(diff, undefined, 'Doctypes')
 }
 
+function scriptTags (t) {
+  const { inputTokens } = require('./stubs/inputs/script-tags')
+  const output = require('./stubs/outputs/script-tags')
+
+  const { ast } = parse(inputTokens)
+
+  const diff = getDiff(output, clearAst(ast))
+
+  t.equal(diff, undefined, 'Script Tags')
+}
+
+function styleTags (t) {
+  const { inputTokens } = require('./stubs/inputs/style-tags')
+  const output = require('./stubs/outputs/style-tags')
+
+  const { ast } = parse(inputTokens)
+
+  const diff = getDiff(output, clearAst(ast))
+
+  t.equal(diff, undefined, 'Style Tags')
+}
+
 test('Parser', (t) => {
   nestedTags(t)
   attributes(t)
   comments(t)
   doctypes(t)
+  scriptTags(t)
+  styleTags(t)
 
   t.end()
 })
