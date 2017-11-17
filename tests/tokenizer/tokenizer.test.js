@@ -44,6 +44,10 @@ const testCases = {
   'Style elements with attributes': {
     input: fs.readFileSync(require.resolve('./stubs/inputs/style-elements-attributes.html'), 'utf8'),
     output: require('./stubs/outputs/style-elements-attributes')
+  },
+  'Different registers of Tags': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/tags-register.html'), 'utf8'),
+    output: require('./stubs/outputs/tags-register')
   }
 }
 

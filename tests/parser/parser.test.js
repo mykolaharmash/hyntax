@@ -1,7 +1,7 @@
 const test = require('tape')
 
 const parse = require('../../lib/parse')
-const { getDiff } = require('../test-helpers')
+const { getDiff, generateTokens, logAst } = require('../test-helpers')
 const { clearAst } = require('../../lib/helpers')
 
 function nestedTags (t) {
@@ -67,13 +67,29 @@ function styleTags (t) {
   t.equal(diff, undefined, 'Style Tags')
 }
 
+function tagsRegister (t) {
+  const { inputTokens, inputHtml } = require('./stubs/inputs/tags-register')
+  const output = require('./stubs/outputs/tags-register')
+
+  //generateTokens(inputHtml)
+
+  const { ast } = parse(inputTokens)
+
+  //logAst(ast)
+
+  const diff = getDiff(output, clearAst(ast))
+
+  t.equal(diff, undefined, 'Style Tags')
+}
+
 test('Parser', (t) => {
-  nestedTags(t)
-  attributes(t)
-  comments(t)
-  doctypes(t)
-  scriptTags(t)
-  styleTags(t)
+  //nestedTags(t)
+  //attributes(t)
+  //comments(t)
+  //doctypes(t)
+  //scriptTags(t)
+  //styleTags(t)
+  tagsRegister(t)
 
   t.end()
 })
