@@ -133,8 +133,26 @@ module.exports = [
   },
   {
     type: TOKEN_TEXT,
-    content: 'closing text',
+    content: 'closing text splitted tag start ',
     startPosition: 126,
-    endPosition: 137
+    endPosition: 157
+  },
+  {
+    type: TOKEN_OPEN_TAG_START,
+    content: '<div',
+    startPosition: 158,
+    endPosition: 161
+  },
+  {
+    type: TOKEN_OPEN_TAG_END,
+    content: '>',
+    startPosition: 162,
+    endPosition: 162
+  },
+  {
+    type: TOKEN_CLOSE_TAG,
+    content: '</div>',
+    startPosition: 163,
+    endPosition: 168
   }
 ]

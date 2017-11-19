@@ -1,5 +1,5 @@
 module.exports = [
-  `<div>some thing</d`,
+  '<div>some thing</d',
   'iv><some-component>another',
   ' thing</some',
   '-component>',
@@ -7,5 +7,8 @@ module.exports = [
   'attribute goes here"',
   ' and=here',
   '>more content</div>',
-  'closing text'
+  'closing text ',
+  'splitted tag start <',
+  'div',
+  '></div>'
 ]
