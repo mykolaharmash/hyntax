@@ -11,6 +11,8 @@ __Both Node.js and browser.__
 ## Usage
 
 ```javascript
+const util = require('util')
+
 const { tokenize, parse } = require('hyntax')
 
 const inputHTML = `
@@ -25,7 +27,8 @@ const inputHTML = `
 const { tokens } = tokenize(inputHTML)
 const { ast } = parse(tokens)
 
-console.log(tokens, ast)
+console.log(JSON.stringify(tokens, null, 2))
+console.log(util.inspect(ast, { showHidden: false, depth: null }))
 ```
 
 
@@ -56,29 +59,39 @@ Stream parsing can be handy in a couple of cases:
 With Hyntax it looks like this
 
 ```javascript
-const https = require('https')
+const http = require('http')
+const util = require('util')
 
 const { TokenizeStream, ParseStream } = require('hyntax')
 
-https.get('https://www.wikipedia.org', (res) => {
+http.get('http://info.cern.ch', (res) => {
   const tokenizeStream = new TokenizeStream()
   const parseStream = new ParseStream()
-  
+
+  let resultTokens = []
+  let resultAst
+
   res.pipe(tokenizeStream).pipe(parseStream)
 
-  tokenizeStream.on('data', (tokens) => {
-    console.log(tokens)
-  })
-  
-  parseStream.on('data', (ast) => {
-    console.log(ast) 
-  })
+  tokenizeStream
+    .on('data', (tokens) => {
+      resultTokens = resultTokens.concat(tokens)
+    })
+    .on('end', () => {
+      console.log(JSON.stringify(resultTokens, null, 2))
+    })
+
+  parseStream
+    .on('data', (ast) => {
+      resultAst = ast
+    })
+    .on('end', () => {
+      console.log(util.inspect(resultAst, { showHidden: false, depth: null }))
+    })
 }).on('error', (err) => {
   throw err;
 })
 ```
-
-
 
 ## Tokenizer
 
