@@ -51,7 +51,7 @@ const testCases = {
   }
 }
 
-test('Tokenizer Syntax', (t) => {
+test('Tokenizer', (t) => {
   Object.keys(testCases).forEach((testCaseKey) => {
     const testCase = testCases[testCaseKey]
     const { tokens } = tokenize(testCase.input)

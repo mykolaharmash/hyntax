@@ -1,7 +1,7 @@
 const { Writable } = require('stream')
 const test = require('tape')
 
-const TokenizeStream = require('../../lib/tokenize-stream')
+const TokenizeStream = require('../../lib/stream-tokenizer')
 const getDiff = require('../test-helpers').getDiff
 
 const inputChunks = require('./stubs/inputs/stream')

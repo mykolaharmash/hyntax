@@ -1,27 +1,27 @@
 const test = require('tape')
 
-const ParseStream = require('../../lib/parse-stream')
+const StreamTreeConstructor = require('../../lib/stream-tree-constructor')
 
 const { clearAst } = require('../../lib/helpers')
 const { inputChunks } = require('./stubs/inputs/stream')
 const outputAst = require('./stubs/outputs/stream')
 const { getDiff } = require('../test-helpers')
 
-test('Stream Parser', (t) => {
-  const parseStream = new ParseStream()
+test('Stream Tree Constructor', (t) => {
+  const streamTreeConstructor = new StreamTreeConstructor()
   let ast
 
-  parseStream.on('data', (resultAst) => {
+  streamTreeConstructor.on('data', (resultAst) => {
     ast = resultAst
   })
 
   inputChunks.forEach((chunk) => {
-    parseStream.write(chunk)
+    streamTreeConstructor.write(chunk)
   })
 
-  parseStream.end()
+  streamTreeConstructor.end()
 
-  parseStream.on('finish', () => {
+  streamTreeConstructor.on('finish', () => {
     const diff = getDiff(outputAst, clearAst(ast))
 
     t.equal(diff, undefined, 'Builds AST from Chunks')
