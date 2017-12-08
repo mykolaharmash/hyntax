@@ -1,12 +1,23 @@
 {
   "name": "hyntax",
   "version": "0.3.0",
-  "description": "Simple HTML tokenizer and parser",
+  "description": "HTML parser. Has separate modules for tokenization and tree-construction. Supports streaming.",
+  "keywords": ["html parser", "html tokenizer", "html tree-constructor", "stream parsing"],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nik-garmash/hyntax.git"
+  },
+  "homepage": "https://github.com/nik-garmash/hyntax",
+  "bugs": "https://github.com/nik-garmash/hyntax/issues",
   "main": "./index.js",
   "scripts": {
     "test": "tape ${TEST:-'./tests/**/*.test.js'} | tap-spec"
   },
-  "author": "Nikolay Garmash",
+  "author": {
+    "name": "Nikolay Garmash",
+    "email": "garmash.nikolay@gmail.com",
+    "url": "https://nikgarmash.com"
+  },
   "license": "MIT",
   "private": false,
   "engines": {
