@@ -1,8 +1,13 @@
 {
   "name": "hyntax",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "HTML parser. Has separate modules for tokenization and tree-construction. Supports streaming.",
-  "keywords": ["html parser", "html tokenizer", "html tree-constructor", "stream parsing"],
+  "keywords": [
+    "html parser",
+    "html tokenizer",
+    "html tree-constructor",
+    "stream parsing"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:nik-garmash/hyntax.git"
