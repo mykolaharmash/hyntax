@@ -1,11 +1,21 @@
 # Hyntax
 
-Simple HTML tokenizer and parser .
+Simple HTML parser.
 
-__Not base on regexps.__ It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).  
-__Supports streaming.__ Can tokenize and parse HTML in chunks, meaning it can handle memory-sensitive scenarios.  
-__Zero dependency.__ Hyntax is written from scratch as a case-study. You can read about how it works in [my blog post](https://nikgarmash.com).  
+__Separate tokenizer and tree-constructor__. 
+You can import and use both modules separately or in combination.
+
+__Streaming.__ 
+Can process HTML in chunks.
+
+__Zero dependency.__ 
+Hyntax is written from scratch as a case-study.
+
 __Both Node.js and browser.__
+
+__Not just a set of RegExp's.__ 
+It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).
+
 
 
 ## Usage
@@ -13,7 +23,7 @@ __Both Node.js and browser.__
 ```javascript
 const util = require('util')
 
-const { tokenize, parse } = require('hyntax')
+const { tokenize, constructTree } = require('hyntax')
 
 const inputHTML = `
 <html>
@@ -25,7 +35,7 @@ const inputHTML = `
 `
 
 const { tokens } = tokenize(inputHTML)
-const { ast } = parse(tokens)
+const { ast } = constructTree(tokens)
 
 console.log(JSON.stringify(tokens, null, 2))
 console.log(util.inspect(ast, { showHidden: false, depth: null }))
@@ -35,16 +45,18 @@ console.log(util.inspect(ast, { showHidden: false, depth: null }))
 
 ## Usage in Browser
 
-You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify. Single Node.js specific piece of code is native Node's streams. All mentioned bundlers have a client-side replacement for stream.
+You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify. 
+
+Single Node.js specific piece of code is the native Node's streams. All mentioned bundlers have a client-side substitute for “stream” module.
 
 All components of Hyntax are separate files, so you can bundle only parts you actually need.
 
 ```javascript
 import tokenize from 'hyntax/lib/tokenize'
-import parse from 'hyntax/lib/parse'
+import constructTree from 'hyntax/lib/construct-tree'
 
-import TokenizeStream from 'hyntax/lib/tokenize-stream'
-import ParseStream from 'hyntax/lib/parse-stream'
+import StreamTokenizer from 'hyntax/lib/stream-tokenizer'
+import StreamTreeConstructor from 'hyntax/lib/stream-tree-constructor'
 ```
 
 
@@ -54,7 +66,7 @@ import ParseStream from 'hyntax/lib/parse-stream'
 Stream parsing can be handy in a couple of cases:
 
 * You have a huge HTML and you don't want or can't store it whole in the memory
-* You need to generate tokens and AST while HTML is still being downloaded
+* You need to generate tokens and AST while HTML is still being loaded
 
 With Hyntax it looks like this
 
@@ -62,18 +74,18 @@ With Hyntax it looks like this
 const http = require('http')
 const util = require('util')
 
-const { TokenizeStream, ParseStream } = require('hyntax')
+const { StreamTokenizer, StreamTreeConstructor } = require('hyntax')
 
 http.get('http://info.cern.ch', (res) => {
-  const tokenizeStream = new TokenizeStream()
-  const parseStream = new ParseStream()
+  const streamTokenizer = new StreamTokenizer()
+  const streamTreeConstructor = new StreamTreeConstructor()
 
   let resultTokens = []
   let resultAst
 
-  res.pipe(tokenizeStream).pipe(parseStream)
+  res.pipe(streamTokenizer).pipe(streamTreeConstructor)
 
-  tokenizeStream
+  streamTokenizer
     .on('data', (tokens) => {
       resultTokens = resultTokens.concat(tokens)
     })
@@ -81,7 +93,7 @@ http.get('http://info.cern.ch', (res) => {
       console.log(JSON.stringify(resultTokens, null, 2))
     })
 
-  parseStream
+  streamTreeConstructor
     .on('data', (ast) => {
       resultAst = ast
     })
@@ -93,9 +105,11 @@ http.get('http://info.cern.ch', (res) => {
 })
 ```
 
+
+
 ## Tokenizer
 
-Hyntax has tokenizer as a separate module. You can use generated tokens on their own or pass them further to a parser to build an AST. You can use default Hyntax parser or write a custom one which builds AST for some specific need.
+Hyntax has its tokenizer as a separate module. You can use generated tokens on their own or pass them further to a tree costructor to build an AST.
 
 #### Interface
 
@@ -103,9 +117,9 @@ Hyntax has tokenizer as a separate module. You can use generated tokens on their
 tokenize(input<String>, [existingState<Object>], [options<Object>])
 ```
 
-For basic usage ```input``` argument is sufficient. 
+For basic usage, single ```input``` argument is sufficient. 
 
-All other arguments are needed only for stream parsing and being used internaly by ```TokenizeStream```  class. You should worry about those only if you're going to have a custom stream implementation.
+All other arguments are needed only for stream parsing and being used internaly by ```StreamTokenizer```  class. You should worry about those only if you're going to have a custom implementation of stream tokenizer.
 
 #### Arguments
 
@@ -126,23 +140,15 @@ All other arguments are needed only for stream parsing and being used internaly 
 
   Default value — ```true```  
 
-* ```options.positionOffset<Number>```
-
-  Number of characters processed by previous ```tokenize(chunk)``` calls. 
-  Needed for correct calculation of tokens position when input is coming in 
-  chunks.
-
-  Default value — ```0```  
-
 #### Returns
 
 ```javascript
-tokenize(input) -> { state<Object>, tokens<Array> }
+tokenize(input) → { state<Object>, tokens<Array> }
 ```
 
-* ```state```
+* ```state<Object>```
 
-  Is the current state of tokenizer. It can be persist and passed to the next tokenizer call if input is coming in chunks.
+  Current state of tokenizer. It can be persist and passed to the next tokenizer call if input is coming in chunks.
 
 * ```tokens<Array>```
 
@@ -169,7 +175,7 @@ Each token is an object with several properties
 
 * ```type```
 
-  One of the type constants from [lib/constants/token-types.js](https://github.com/).
+  One of the type constants from [lib/constants/token-types.js](https://github.com/nik-garmash/hyntax/blob/master/lib/constants/token-types.js).
 
 * ```content```
 
@@ -185,5 +191,14 @@ Each token is an object with several properties
 
 
 
-## Parser
+
+## Tree Constructor
+
+After you have an array of tokens, you can pass them into tree constructor to build an AST.
+
+#### Interface
+
+```javascript
+constructTree()
+```
 

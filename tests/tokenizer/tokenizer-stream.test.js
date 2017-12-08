@@ -1,7 +1,7 @@
 const { Writable } = require('stream')
 const test = require('tape')
 
-const TokenizeStream = require('../../lib/stream-tokenizer')
+const StreamTokenizer = require('../../lib/stream-tokenizer')
 const getDiff = require('../test-helpers').getDiff
 
 const inputChunks = require('./stubs/inputs/stream')
@@ -21,16 +21,16 @@ class TestWritable extends Writable {
 }
 
 test('Stream Tokenizer', (t) => {
-  const tokenizeStream = new TokenizeStream()
+  const streamTokenizer = new StreamTokenizer()
   const testWritable = new TestWritable({ objectMode: true })
 
-  tokenizeStream.pipe(testWritable)
+  streamTokenizer.pipe(testWritable)
 
   inputChunks.forEach((chunk) => {
-    tokenizeStream.write(chunk)
+    streamTokenizer.write(chunk)
   })
 
-  tokenizeStream.end()
+  streamTokenizer.end()
 
   testWritable.on('finish', () => {
     const diff = getDiff(outputTokens, testWritable.tokens)
