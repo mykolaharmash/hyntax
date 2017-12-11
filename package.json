@@ -16,7 +16,8 @@
   "bugs": "https://github.com/nik-garmash/hyntax/issues",
   "main": "./index.js",
   "scripts": {
-    "test": "tape ${TEST:-'./tests/**/*.test.js'} | tap-spec"
+    "test": "tape ${TEST:-'./tests/**/*.test.js'} | tap-spec",
+    "generate-readme-toc": "markdown-toc --no-firsth1=true -i ./README.md"
   },
   "author": {
     "name": "Nikolay Garmash",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "deep-diff": "^0.3.8",
     "eslint": "^4.11.0",
+    "markdown-toc": "^1.2.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0"
   },

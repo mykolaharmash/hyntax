@@ -2,7 +2,7 @@
 
 Simple HTML parser.
 
-**Separate tokenizer and tree-constructor**  
+**Separate tokenizer and tree constructor**  
 You can import and use both modules separately or in combination.
 
 **Supports streaming**  
@@ -17,9 +17,36 @@ Hyntax is written from scratch as a case-study.
 It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).
 
 **Forgiving**  
-Just like browser, normally parses invalid HTML.
+Just like a browser, normally parses invalid HTML.
 
+<!-- toc -->
 
+- [Usage](#usage)
+- [Bundling For a Browser](#bundling-for-a-browser)
+- [Streaming](#streaming)
+- [Tokenizer](#tokenizer)
+    + [Interface](#interface)
+    + [Arguments](#arguments)
+    + [Returns](#returns)
+- [Tokens](#tokens)
+- [Tree Constructor](#tree-constructor)
+    + [Interface](#interface-1)
+    + [Arguments](#arguments-1)
+    + [Returns](#returns-1)
+- [AST Format](#ast-format)
+    + [Types of Nodes](#types-of-nodes)
+    + [Node Object](#node-object)
+    + [Document Node](#document-node)
+    + [Doctype Node](#doctype-node)
+    + [Text Node](#text-node)
+    + [Tag Node](#tag-node)
+    + [Comment](#comment)
+    + [Script Node](#script-node)
+    + [Style Node](#style-node)
+    + [Doctype Attribute](#doctype-attribute)
+    + [Tag Attribute](#tag-attribute)
+
+<!-- tocstop -->
 
 ## Usage
 
