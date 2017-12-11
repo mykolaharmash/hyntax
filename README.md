@@ -2,7 +2,8 @@
 
 Simple HTML parser.
 
-**Separate tokenizer and tree-constructor.**  You can import and use both modules separately or in combination.
+**Separate tokenizer and tree-constructor.**
+You can import and use both modules separately or in combination.
 
 **Supports streaming.**  Can process HTML in chunks.
 
