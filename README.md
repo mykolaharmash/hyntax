@@ -2,18 +2,22 @@
 
 Simple HTML parser.
 
-**Separate tokenizer and tree-constructor.**
+**Separate tokenizer and tree-constructor.**  
 You can import and use both modules separately or in combination.
 
-**Supports streaming.**  Can process HTML in chunks.
+**Supports streaming.**  
+Can process HTML in chunks.
 
-**Zero dependencies.**  Hyntax is written from scratch as a case-study.
+**Zero dependencies.**  
+Hyntax is written from scratch as a case-study.
 
 **Both Node.js and browser.**
 
-**Not just a set of RegExp's.**  It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).
+**Not just a set of RegExp's.**  
+It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).
 
-**Forgiving.**  Just like browser, normally parses invalid HTML.
+**Forgiving.**  
+Just like browser, normally parses invalid HTML.
 
 
 
