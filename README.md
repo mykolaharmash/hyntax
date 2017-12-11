@@ -19,6 +19,10 @@ It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).
 **Forgiving**  
 Just like a browser, normally parses invalid HTML.
 
+
+
+## Table Of Contents
+
 <!-- toc -->
 
 - [Usage](#usage)
@@ -47,6 +51,8 @@ Just like a browser, normally parses invalid HTML.
     + [Tag Attribute](#tag-attribute)
 
 <!-- tocstop -->
+
+
 
 ## Usage
 
