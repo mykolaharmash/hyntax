@@ -1,6 +1,6 @@
 # Hyntax
 
-Simple HTML parser.
+Straightforward HTML parser.
 
 **Separate tokenizer and tree constructor**  
 You can import and use both modules separately or in combination.
