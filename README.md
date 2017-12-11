@@ -8,7 +8,7 @@ You can import and use both modules separately or in combination.
 **Supports streaming.** 
 Can process HTML in chunks.
 
-**Zero dependency.** 
+**Zero dependencies.** 
 Hyntax is written from scratch as a case-study.
 
 **Both Node.js and browser.**
@@ -50,7 +50,7 @@ console.log(util.inspect(ast, { showHidden: false, depth: null }))
 
 You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify. 
 
-Single Node.js specific piece of code is the native Node's streams. All mentioned bundlers have a client-side substitute for “stream” module.
+The single Node.js specific piece of code is the native Node's streams. All mentioned bundlers have a client-side substitute for “stream” module.
 
 All components of Hyntax are separate files, so you can bundle only parts you actually need.
 
@@ -112,7 +112,7 @@ http.get('http://info.cern.ch', (res) => {
 
 ## Tokenizer
 
-Hyntax has its tokenizer as a separate module. You can use generated tokens on their own or pass them further to a tree costructor to build an AST.
+Hyntax has its tokenizer as a separate module. You can use generated tokens on their own or pass them further to a tree constructor to build an AST.
 
 #### Interface
 
@@ -122,7 +122,7 @@ tokenize(html<String>, [existingState<Object>], [options<Object>])
 
 For most use-cases, single ```html``` argument is sufficient. 
 
-All other arguments are needed only for stream parsing and being used internaly by ```StreamTokenizer```  class. You should worry about those only if you're going to have a custom implementation of stream tokenizer.
+All other arguments are needed only for stream parsing and being used internally by ```StreamTokenizer``` class. You should worry about those only if you're going to have a custom implementation of stream tokenizer.
 
 #### Arguments
 
@@ -137,7 +137,7 @@ All other arguments are needed only for stream parsing and being used internaly 
 
   Optional.
 
-  When input is coming in chunks and multiple calls of ```tokenize(chunk)``` are required, ```existingState``` parameter is used to pass result of previous call.
+  When the input is coming in chunks and multiple calls of ```tokenize(chunk)``` are required, the ```existingState``` parameter is used to pass a result of previous call.
 
   Default value — ```undefined```.
 
@@ -145,7 +145,7 @@ All other arguments are needed only for stream parsing and being used internaly 
 
   Optional.
 
-  Signal that current input chunk is the last one. Used for creating of the last token which does not have explicit ending. For example when input is interrupted in the middle of a tag content without reaching closing tag.
+  A signal that current input chunk is the last one. Used for creating of the last token which does not have an explicit ending. For example when the input is interrupted in the middle of a tag content without reaching closing tag.
 
   Default value — ```true```  
 
@@ -157,7 +157,7 @@ tokenize(html) → { state<Object>, tokens<Array> }
 
 * ```state<Object>```
 
-  Current state of tokenizer. It can be persist and passed to the next tokenizer call if input is coming in chunks.
+  The current state of tokenizer. It can persist and passed to the next tokenizer call if the input is coming in chunks.
 
 * ```tokens<Array>```
 
@@ -167,7 +167,7 @@ tokenize(html) → { state<Object>, tokens<Array> }
 
 ## Tokens
 
-Here is a high level overview of all possible tokens.
+Here is a high-level overview of all possible tokens.
 
 ![Overview of all possible tokens](./tokens-list.png)
 
@@ -196,14 +196,14 @@ Each token is an object with several properties
 
 * ```endPosition<Number>```
 
-  Index of a character in the input HTML string where token ends.
+  Index of a character in the input HTML string where the token ends.
 
 
 
 
 ## Tree Constructor
 
-After you have an array of tokens, you can pass them into tree constructor to build an AST.
+After you've got an array of tokens, you can pass them into tree constructor to build an AST.
 
 #### Interface
 
@@ -213,7 +213,7 @@ constructTree(tokens<Array>, [existingState<Object>])
 
 For most use-cases, single ```tokens``` argument is sufficient.
 
-```existingState``` argument is used internaly by ```StreamTreeConstructor``` . You need to worry about it only if you're going to implement custom stream tree constructor.
+```existingState``` argument is used internally by ```StreamTreeConstructor``` . You need to worry about it only if you're going to implement custom stream tree constructor.
 
 #### Arguments
 
@@ -221,13 +221,13 @@ For most use-cases, single ```tokens``` argument is sufficient.
 
   Required.
 
-  Array of tokens recieved from the tokenizer.
+  Array of tokens received from the tokenizer.
 
 - ```existingState<Object>```
 
   Optional.
 
-  State, returned by previous ```constructTree(tokens)``` call. Makes possible to build AST incrementally in case the tokens come in chunks.
+  State, returned by the previous ```constructTree(tokens)``` call. Makes possible to build AST incrementally in case the tokens come in chunks.
 
 #### Returns
 
@@ -237,7 +237,7 @@ constructTree(tokens) → { state<Object>, ast<Object> }
 
 - ```state<Object>```
 
-  Current state of the tree constructor. Can be persist and passed to the next tree constructor call in case tokens come in chunks.
+  The current state of the tree constructor. Can be persisted and passed to the next tree constructor call in case of tokens come in chunks.
 
 - ```ast<Object>```
 
@@ -247,7 +247,7 @@ constructTree(tokens) → { state<Object>, ast<Object> }
 
 ## AST Format
 
-Hyntax AST is a tree of nested nodes which reflects structure of original HTML.
+Hyntax AST is a tree of nested nodes which reflects the structure of original HTML.
 
 You can play around with the [AST Explorer](https://astexplorer.net) to see how AST looks like.
 
@@ -302,7 +302,7 @@ Each node has the same interface.
 
 - ```content<Object>```
 
-  Object with different set of properties depending on the node type. See nodes descriptions to see content interface for a specific type of node. 
+  Object with a different set of properties depending on the node type. See nodes descriptions to see the content interface for a specific type of node. 
 
 #### Document Node
 
@@ -527,7 +527,7 @@ Root node of the AST.
 
 #### Doctype Attribute
 
-If doctype tag has attributes, its node in AST will have a ```content.attributes<Array>`` property with one or more doctype attribute objects inside.
+If doctype tag has attributes, its node in AST will have a ```content.attributes<Array>``` property with one or more doctype attribute objects inside.
 
 ```javascript
 {
@@ -555,7 +555,7 @@ If doctype tag has attributes, its node in AST will have a ```content.attributes
 
 #### Tag Attribute
 
-If a tag has attributes, its node in AST will have an ```content.attributes<Array>`` property with one or more tag attribute objects inside.
+If a tag has attributes, its node in AST will have a ```content.attributes<Array>``` property with one or more tag attribute objects inside.
 
 ```javascript
 {
@@ -570,7 +570,7 @@ If a tag has attributes, its node in AST will have an ```content.attributes<Arra
 
   Optional.
 
-  Token object of an atrribute key. There is a case when attribute might not have a key but have a value at the same time, it is when attribute is written like this ```<div =foo></div>```, it's invalid HTML but it's possible.
+  Token object of an attribute key. There is a case when attribute might not have a key but have a value at the same time, it is when an attribute is written like this ```<div =foo></div>```, it's invalid HTML but it's possible.
 
 - ```startWrapper<Token>```
 
