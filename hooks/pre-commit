@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -v
+
+npx eslint index.js ./lib/**
