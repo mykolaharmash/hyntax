@@ -53,6 +53,8 @@ Just like a browser, normally parses invalid HTML.
 
 <!-- tocstop -->
 
+
+
 ## Install
 
 ```bash
@@ -289,6 +291,7 @@ constructTree(tokens) → { state<Object>, ast<Object> }
 
 
 
+
 ## AST Format
 
 Hyntax AST is a tree of nested nodes which reflects the structure of original HTML.
@@ -308,9 +311,9 @@ Here is a brief example.
       },
       {
       	nodeType: <String>,
-	    content: {
-      	  childrent: […]	
-      	}
+        content: {
+          childrent: […]	
+        }
       }
     ]    
   }
