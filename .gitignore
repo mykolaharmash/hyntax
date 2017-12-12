@@ -1,2 +1,4 @@
+*.es5.js
 tmp/
 node_modules/
+lib-es5/

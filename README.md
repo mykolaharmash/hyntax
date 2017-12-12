@@ -25,6 +25,7 @@ Just like a browser, normally parses invalid HTML.
 
 <!-- toc -->
 
+- [Install](#install)
 - [Usage](#usage)
 - [Bundling For a Browser](#bundling-for-a-browser)
 - [Streaming](#streaming)
@@ -52,14 +53,25 @@ Just like a browser, normally parses invalid HTML.
 
 <!-- tocstop -->
 
+## Install
+
+```bash
+npm install hyntax
+```
+
+or
+
+```bash
+yarn add hyntax
+```
+
 
 
 ## Usage
 
 ```javascript
-const util = require('util')
-
 const { tokenize, constructTree } = require('hyntax')
+const util = require('util')
 
 const inputHTML = `
 <html>
@@ -107,10 +119,9 @@ Stream parsing can be handy in a couple of cases:
 With Hyntax it looks like this
 
 ```javascript
+const { StreamTokenizer, StreamTreeConstructor } = require('hyntax')
 const http = require('http')
 const util = require('util')
-
-const { StreamTokenizer, StreamTreeConstructor } = require('hyntax')
 
 http.get('http://info.cern.ch', (res) => {
   const streamTokenizer = new StreamTokenizer()
@@ -282,7 +293,7 @@ constructTree(tokens) → { state<Object>, ast<Object> }
 
 Hyntax AST is a tree of nested nodes which reflects the structure of original HTML.
 
-You can play around with the [AST Explorer](https://astexplorer.net) to see how AST looks like.
+<!-- You can play around with the [AST Explorer](https://astexplorer.net) to see how AST looks like. -->
 
 Here is a brief example.
 
