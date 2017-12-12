@@ -306,16 +306,16 @@ Here is a brief example.
   content: {
     children: [
       {
-      	nodeType: <String>,
+        nodeType: <String>,
         content: {…}
       },
       {
-      	nodeType: <String>,
+        nodeType: <String>,
         content: {
           childrent: […]	
         }
       }
-    ]    
+    ]
   }
 }
 ```
