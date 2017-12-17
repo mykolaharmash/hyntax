@@ -61,12 +61,6 @@ Just like a browser, normally parses invalid HTML.
 npm install hyntax
 ```
 
-or
-
-```bash
-yarn add hyntax
-```
-
 
 
 ## Usage
