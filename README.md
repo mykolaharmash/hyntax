@@ -19,13 +19,16 @@ It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).
 **Forgiving**  
 Just like a browser, normally parses invalid HTML.
 
+```javascript
+npm install hyntax
+```
+
 
 
 ## Table Of Contents
 
 <!-- toc -->
 
-- [Install](#install)
 - [Usage](#usage)
 - [Bundling For a Browser](#bundling-for-a-browser)
 - [Streaming](#streaming)
@@ -52,16 +55,6 @@ Just like a browser, normally parses invalid HTML.
     + [Tag Attribute](#tag-attribute)
 
 <!-- tocstop -->
-
-
-
-## Install
-
-```bash
-npm install hyntax
-```
-
-
 
 ## Usage
 
