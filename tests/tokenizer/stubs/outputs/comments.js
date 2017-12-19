@@ -161,8 +161,32 @@ module.exports = [
   },
   {
     type: TOKEN_TEXT,
-    content: '\n',
+    content: '\n\n',
     startPosition: 135,
-    endPosition: 135
+    endPosition: 136
+  },
+  {
+    type: TOKEN_COMMENT_START,
+    content: '<!--',
+    startPosition: 137,
+    endPosition: 140
+  },
+  {
+    type: TOKEN_COMMENT_CONTENT,
+    content: '         spaces here          ',
+    startPosition: 141,
+    endPosition: 170
+  },
+  {
+    type: TOKEN_COMMENT_END,
+    content: '-->',
+    startPosition: 171,
+    endPosition: 173
+  },
+  {
+    type: TOKEN_TEXT,
+    content: '\n',
+    startPosition: 174,
+    endPosition: 174
   }
 ]

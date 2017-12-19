@@ -29,6 +29,18 @@ const testCases = {
     input: fs.readFileSync(require.resolve('./stubs/inputs/attributes-quote.html'), 'utf8'),
     output: require('./stubs/outputs/attributes-quote')
   },
+  'Attributes (apostrophes)': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/attributes-apostrophe.html'), 'utf8'),
+    output: require('./stubs/outputs/attributes-apostrophe')
+  },
+  'Attributes (bare)': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/attributes-bare.html'), 'utf8'),
+    output: require('./stubs/outputs/attributes-bare')
+  },
+  'Attributes (empty)': {
+    input: fs.readFileSync(require.resolve('./stubs/inputs/attributes-empty.html'), 'utf8'),
+    output: require('./stubs/outputs/attributes-empty')
+  },
   'Doctype': {
     input: fs.readFileSync(require.resolve('./stubs/inputs/doctypes.html'), 'utf8'),
     output: require('./stubs/outputs/doctypes')

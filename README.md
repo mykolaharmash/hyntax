@@ -2,28 +2,33 @@
 
 Straightforward HTML parser.
 
-**Separate tokenizer and tree constructor**  
-You can import and use both modules separately or in combination.
-
-**Supports streaming**  
-Can process HTML in chunks.
-
-**Zero dependencies**  
-Hyntax is written from scratch as a case-study.
-
-**Both Node.js and browser**
-
-**Not just a set of RegExp's**  
-It's a legit [parser](https://en.wikipedia.org/wiki/Parsing).
-
-**Forgiving**  
-Just like a browser, normally parses invalid HTML.
-
-```javascript
-npm install hyntax
-```
 
 
+## Features
+
+- Separate tokenizer and tree constructor
+
+  You can import and use both modules separately or in combination.
+
+- Streaming
+
+  Can process HTML in chunks.
+
+- Works in Node.js and browser
+
+- Forgiving
+
+  Just like a browser, normally parses invalid HTML.
+
+- Zero dependencies
+
+  Hyntax is written from scratch as a case-study. Compressed bundle for a browser is just 7.9KB.
+
+- Not just a set of RegExp's
+
+  It's a legit [parser](https://en.wikipedia.org/wiki/Parsing). Code base is flexible and easy to maintain.
+
+  ​
 
 ## Table Of Contents
 
@@ -32,6 +37,7 @@ npm install hyntax
 - [Usage](#usage)
 - [Bundling For a Browser](#bundling-for-a-browser)
 - [Streaming](#streaming)
+- [Performance](#performance)
 - [Tokenizer](#tokenizer)
     + [Interface](#interface)
     + [Arguments](#arguments)
@@ -57,6 +63,10 @@ npm install hyntax
 <!-- tocstop -->
 
 ## Usage
+
+```bash
+npm install hyntax
+```
 
 ```javascript
 const { tokenize, constructTree } = require('hyntax')
@@ -143,6 +153,23 @@ http.get('http://info.cern.ch', (res) => {
 
 
 
+## Performance
+
+Here are timings for parsing main pages of some popular sites. 
+
+Mesured on my MacBook Pro (2,5 GHz Core i7, 16 GB) with Node.js v8.9.1.
+
+```
+github.com — 17.540018ms
+google.com — 6.839593ms
+wikipedia.org — 21.681948ms
+reddit.com — 51.568484ms
+facebook.com — 92.511287ms
+youtube.com — 139.374742ms
+```
+
+
+
 ## Tokenizer
 
 Hyntax has its tokenizer as a separate module. You can use generated tokens on their own or pass them further to a tree constructor to build an AST.
@@ -195,6 +222,7 @@ tokenize(html) → { state<Object>, tokens<Array> }
 * ```tokens<Array>```
 
   Array of resulting tokens.
+
 
 
 
