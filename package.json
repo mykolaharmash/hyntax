@@ -3,10 +3,20 @@
   "version": "0.3.4",
   "description": "HTML parser. Has separate modules for tokenization and tree-construction. Supports streaming.",
   "keywords": [
+    "html",
+    "parser",
+    "html5",
+    "html5 parser",
+    "htmlparser",
     "html parser",
-    "html tokenizer",
     "html tree-constructor",
-    "stream parsing"
+    "html to JSON",
+    "html to AST",
+    "html tokenizer",
+    "tokenize",
+    "tokenizer",
+    "stream parsing",
+    "stream parser"
   ],
   "repository": {
     "type": "git",
