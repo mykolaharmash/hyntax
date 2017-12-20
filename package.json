@@ -1,6 +1,6 @@
 {
   "name": "hyntax",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "HTML parser. Has separate modules for tokenization and tree-construction. Supports streaming.",
   "keywords": [
     "html parser",
