@@ -190,7 +190,7 @@ tokenize(html) → { state<Object>, tokens<Array> }
 
 * ```state<Object>```
 
-  The current state of tokenizer. It can persist and passed to the next tokenizer call if the input is coming in chunks.
+  The current state of tokenizer. It can be persisted and passed to the next tokenizer call if the input is coming in chunks.
 
 * ```tokens<Array>```
 
@@ -270,7 +270,7 @@ constructTree(tokens) → { state<Object>, ast<Object> }
 
 - ```state<Object>```
 
-  The current state of the tree constructor. Can be persisted and passed to the next tree constructor call in case of tokens come in chunks.
+  The current state of the tree constructor. Can be persisted and passed to the next tree constructor call in case when tokens are coming in chunks.
 
 - ```ast<Object>```
 
