@@ -1,6 +1,6 @@
 # Hyntax
 
-Straightforward HTML parser.
+Straightforward HTML parser for Node.js and browser.
 
 
 
@@ -110,12 +110,7 @@ import StreamTreeConstructor from 'hyntax/lib/stream-tree-constructor'
 
 ## Streaming
 
-Stream parsing can be handy in a couple of cases:
-
-* You have a huge HTML and you don't want or can't store it whole in the memory
-* You need to generate tokens and AST while HTML is still being loaded
-
-With Hyntax it looks like this
+Use ```StreamTokenizer``` and ```StreamTreeConstructor``` classes to parse HTML chunk by chunk while it's still being loaded from the network or read from the disk.
 
 ```javascript
 const { StreamTokenizer, StreamTreeConstructor } = require('hyntax')
