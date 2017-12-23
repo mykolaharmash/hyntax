@@ -1,3 +1,5 @@
+![npm version number v1.0.1](https://img.shields.io/npm/v/hyntax.svg) 
+
 # Hyntax
 
 Straightforward HTML parser for Node.js and browser.
