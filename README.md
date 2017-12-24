@@ -157,12 +157,12 @@ Here are timings for parsing main pages of some popular sites.
 Mesured on my MacBook Pro (2,5 GHz Core i7, 16 GB) with Node.js v8.9.1.
 
 ```
-github.com — 17.540018ms
-google.com — 6.839593ms
-wikipedia.org — 21.681948ms
-reddit.com — 51.568484ms
-facebook.com — 92.511287ms
-youtube.com — 139.374742ms
+google.com (12KB) — 6.839593ms
+github.com (51KB) — 17.540018ms
+wikipedia.org (74KB) — 21.681948ms
+reddit.com (183KB) — 51.568484ms
+facebook.com (336KB) — 92.511287ms
+youtube.com (500KB) — 139.374742ms
 ```
 
 
