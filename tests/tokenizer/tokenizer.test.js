@@ -3,6 +3,7 @@ const test = require('tape')
 
 const tokenize = require('../../lib/tokenize')
 const getDiff = require('../test-helpers').getDiff
+const logAst = require('../test-helpers').logAst
 
 const testCases = {
   'Opening and closing text': {
@@ -67,6 +68,8 @@ test('Tokenizer', (t) => {
   Object.keys(testCases).forEach((testCaseKey) => {
     const testCase = testCases[testCaseKey]
     const { tokens } = tokenize(testCase.input)
+
+    //logAst(tokens)
 
     const diff = getDiff(testCase.output, tokens)
 
