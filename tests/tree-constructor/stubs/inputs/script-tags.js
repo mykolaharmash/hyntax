@@ -152,7 +152,7 @@ const inputTokens = [
     endPosition: 95
   },
   {
-    type: 'token:attribute-value-wrapper-end',
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
     content: '"',
     startPosition: 96,
     endPosition: 96
@@ -224,7 +224,7 @@ const inputTokens = [
     endPosition: 174
   },
   {
-    type: 'token:attribute-value-wrapper-end',
+    type: TOKEN_ATTRIBUTE_VALUE_WRAPPER_END,
     content: '"',
     startPosition: 175,
     endPosition: 175
