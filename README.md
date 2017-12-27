@@ -1,4 +1,4 @@
-![npm version number v1.0.1](https://img.shields.io/npm/v/hyntax.svg) 
+![npm version number v1.0.2](https://img.shields.io/npm/v/hyntax.svg) 
 
 # Hyntax
 
