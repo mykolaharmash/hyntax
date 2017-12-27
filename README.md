@@ -157,12 +157,23 @@ Here are timings for parsing main pages of some popular sites.
 Mesured on my MacBook Pro (2,5 GHz Core i7, 16 GB) with Node.js v8.9.1.
 
 ```
-google.com (12KB) — 6.839593ms
-github.com (51KB) — 17.540018ms
-wikipedia.org (74KB) — 21.681948ms
-reddit.com (183KB) — 51.568484ms
-facebook.com (336KB) — 92.511287ms
-youtube.com (500KB) — 139.374742ms
+google.com (12KB) — 6.2061 ms
+github.com (51KB) — 17.7546 ms
+wikipedia.org (74KB) — 21.5237 ms
+reddit.com (183KB) — 48.1990 ms
+facebook.com (336KB) — 90.8315 ms
+youtube.com (500KB) — 134.34459 ms
+```
+
+Compared to [parse5](https://github.com/inikulin/parse5) on the same files and the same hardware.
+
+```
+google.com (12KB) — 3.0161 ms
+github.com (51KB) — 28.7732 ms
+wikipedia.org (74KB) — 20.0709 ms
+reddit.com (183KB) — 40.0286 ms
+facebook.com (336KB) — 95.7040 ms
+youtube.com (500KB) — 100.0202 ms
 ```
 
 
