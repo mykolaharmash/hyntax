@@ -1,8 +1,14 @@
-![npm version number v1.0.2](https://img.shields.io/npm/v/hyntax.svg) 
+<p align="center">
+
+<img src="./logo.png" alt="Hyntax project logo — lego bricks in the shape of a capital letter H" width="150">
+
+</p>
 
 # Hyntax
 
 Straightforward HTML parser for Node.js and browser.
+
+![npm version number v1.0.2](https://img.shields.io/npm/v/hyntax.svg)  
 
 
 
@@ -163,17 +169,6 @@ wikipedia.org (74KB) — 21.5237 ms
 reddit.com (183KB) — 48.1990 ms
 facebook.com (336KB) — 90.8315 ms
 youtube.com (500KB) — 134.34459 ms
-```
-
-Compared to [parse5](https://github.com/inikulin/parse5) on the same files and the same hardware.
-
-```
-google.com (12KB) — 3.0161 ms
-github.com (51KB) — 28.7732 ms
-wikipedia.org (74KB) — 20.0709 ms
-reddit.com (183KB) — 40.0286 ms
-facebook.com (336KB) — 95.7040 ms
-youtube.com (500KB) — 100.0202 ms
 ```
 
 
