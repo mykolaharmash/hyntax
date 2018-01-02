@@ -30,7 +30,7 @@ Straightforward HTML parser for Node.js and browser.
 
 - Zero dependencies
 
-  Hyntax is written from scratch as a case-study. Compressed bundle for a browser is just 7.9KB.
+  Hyntax is written from scratch as a case-study. Compressed bundle for a browser is just 4.7KB.
 
 - Not just a set of RegExp's
 
