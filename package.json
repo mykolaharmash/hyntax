@@ -27,6 +27,7 @@
   "main": "./index.js",
   "scripts": {
     "test": "tape ${TEST:-'./tests/**/*.test.js'} | tap-spec",
+    "coverage": "nyc npm test",
     "generate-readme-toc": "markdown-toc --no-firsth1=true -i ./README.md",
     "prepublishOnly": "babel index.js --out-file index.es5.js && babel lib --out-dir lib-es5"
   },
@@ -44,9 +45,11 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "coveralls": "^3.0.0",
     "deep-diff": "^0.3.8",
     "eslint": "^4.13.1",
     "markdown-toc": "^1.2.0",
+    "nyc": "^11.4.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0"
   },
