@@ -27,7 +27,7 @@
   "main": "./index.js",
   "scripts": {
     "test": "tape ${TEST:-'./tests/**/*.test.js'} | tap-spec",
-    "coverage": "nyc npm test",
+    "coverage": "nyc -x 'tests/**/*' npm test",
     "generate-readme-toc": "markdown-toc --no-firsth1=true -i ./README.md",
     "prepublishOnly": "babel index.js --out-file index.es5.js && babel lib --out-dir lib-es5"
   },
