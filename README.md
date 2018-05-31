@@ -8,7 +8,7 @@
 
 Straightforward HTML parser for Node.js and browser.
 
-![npm version number v1.0.2](https://img.shields.io/npm/v/hyntax.svg) ![Coverage Status](https://coveralls.io/repos/github/nik-garmash/hyntax/badge.svg?branch=master)
+![npm version number v1.0.5](https://img.shields.io/npm/v/hyntax.svg) ![Coverage Status](https://coveralls.io/repos/github/nik-garmash/hyntax/badge.svg?branch=master)
 
 
 
@@ -83,7 +83,7 @@ const util = require('util')
 const inputHTML = `
 <html>
   <body>
-      <input type="text" placeholder="Don't type"> 
+      <input type="text" placeholder="Don't type">
       <button>Don't press</button>
   </body>
 </html>
@@ -100,7 +100,7 @@ console.log(util.inspect(ast, { showHidden: false, depth: null }))
 
 ## Bundling For a Browser
 
-You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify. 
+You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify.
 
 The single Node.js specific piece of code is the native Node's streams. All mentioned bundlers have a client-side substitute for “stream” module.
 
@@ -158,7 +158,7 @@ http.get('http://info.cern.ch', (res) => {
 
 ## Performance
 
-Here are timings for parsing main pages of some popular sites. 
+Here are timings for parsing main pages of some popular sites.
 
 Mesured on my MacBook Pro (2,5 GHz Core i7, 16 GB) with Node.js v8.9.1.
 
@@ -183,7 +183,7 @@ Hyntax has its tokenizer as a separate module. You can use generated tokens on t
 tokenize(html<String>, [existingState<Object>], [options<Object>])
 ```
 
-For most use-cases, single ```html``` argument is sufficient. 
+For most use-cases, single ```html``` argument is sufficient.
 
 All other arguments are needed only for stream parsing and being used internally by ```StreamTokenizer``` class. You should worry about those only if you're going to have a custom implementation of stream tokenizer.
 
@@ -210,7 +210,7 @@ All other arguments are needed only for stream parsing and being used internally
 
   A signal that current input chunk is the last one. Used for creating of the last token which does not have an explicit ending. For example when the input is interrupted in the middle of a tag content without reaching closing tag.
 
-  Default value — ```true```  
+  Default value — ```true```
 
 #### Returns
 
@@ -330,7 +330,7 @@ Here is a brief example.
       {
         nodeType: <String>,
         content: {
-          childrent: […]	
+          childrent: […]
         }
       }
     ]
@@ -367,7 +367,7 @@ Each node has the same interface.
 
 - ```content<Object>```
 
-  Object with a different set of properties depending on the node type. See nodes descriptions to see the content interface for a specific type of node. 
+  Object with a different set of properties depending on the node type. See nodes descriptions to see the content interface for a specific type of node.
 
 #### Document Node
 
@@ -377,7 +377,7 @@ Root node of the AST.
 {
   nodeType: <String>,
   content: {
-    children: <Array>	  		    
+    children: <Array>
   }
 }
 ```
@@ -423,7 +423,7 @@ Root node of the AST.
 {
   nodeType: <String>,
   content: {
-    value: <Token>    
+    value: <Token>
   }
 }
 ```
