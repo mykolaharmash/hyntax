@@ -330,7 +330,7 @@ Here is a brief example.
       {
         nodeType: <String>,
         content: {
-          childrent: […]
+          children: […]
         }
       }
     ]
