@@ -17,16 +17,16 @@ jobs:
   coverage:
     docker:
       - image: node:10.15.3-alpine
-      steps:
-        - checkout
-        - run:
-            name: Install
-            command: npm i
-        - run:
-            name: Coverage
-            command: |
-              npm run coverage
-              npx nyc report --reporter=text-lcov | npx coveralls
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: npm i
+      - run:
+          name: Coverage
+          command: |
+            npm run coverage
+            npx nyc report --reporter=text-lcov | npx coveralls
 
 workflows:
   version: 2
