@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:10.15.3-alpine
+    steps:
+      - checkout
+      - run:
+          name: coverage
+          command: |
+            npm run coverage
+            npx nyc report --reporter=text-lcov | npx coveralls
