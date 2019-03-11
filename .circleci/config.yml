@@ -8,9 +8,9 @@ jobs:
       - run:
           name: Install
           command: npm i
-      - run
-        name: Lint
-        command: npx eslint index.js ./lib/**
+      - run:
+          name: Lint
+          command: npx eslint index.js ./lib/**
       - run:
           name: Unit Tests
           command: npm test
