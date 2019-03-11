@@ -34,10 +34,10 @@ workflows:
     jobs:
       - test
   release:
-    requires:
-      - test
     jobs:
       - coverage:
+          requires:
+            - test
           filters:
             tags:
               only: /^v\d+\.\d+\.\d+$/
