@@ -37,29 +37,19 @@ Straightforward HTML parser for Node.js and browser.
 ## Table Of Contents
 
 -   [Usage](#usage)
-
 -   [Bundling For a Browser](#bundling-for-a-browser)
-
 -   [Streaming](#streaming)
-
 -   [Performance](#performance)
-
 -   [Tokenizer](#tokenizer)
-
     -   -   [Interface](#interface)
         -   [Arguments](#arguments)
         -   [Returns](#returns)
-
 -   [Tokens](#tokens)
-
 -   [Tree Constructor](#tree-constructor)
-
     -   -   [Interface](#interface-1)
         -   [Arguments](#arguments-1)
         -   [Returns](#returns-1)
-
 -   [AST Format](#ast-format)
-
     -   -   [Types of Nodes](#types-of-nodes)
         -   [Node Object](#node-object)
         -   [Document Node](#document-node)
