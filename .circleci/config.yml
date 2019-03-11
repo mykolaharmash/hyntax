@@ -40,7 +40,7 @@ workflows:
       - coverage:
           filters:
             tags:
-              - /^v\d+\.\d+\.\d+$/
+              only: /^v\d+\.\d+\.\d+$/
 
 
 
