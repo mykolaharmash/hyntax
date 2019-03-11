@@ -7,8 +7,8 @@ const toc = require('remark-toc')
 const readme = fs.readFileSync('./README.md').toString()
 
 remark()
-  .use(toc)
-  .process(readme, function(err, file) {
+  .use(toc, { tight: true })
+  .process(readme, function (err, file) {
     if (err) {
       throw err
     }

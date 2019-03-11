@@ -8,7 +8,7 @@
 
 Straightforward HTML parser for Node.js and browser.
 
-![npm version number v1.0.9](https://img.shields.io/npm/v/hyntax.svg) ![Coverage Status](https://coveralls.io/repos/github/nik-garmash/hyntax/badge.svg?branch=master)
+![npm version number v1.0.10](https://img.shields.io/npm/v/hyntax.svg) ![Coverage Status](https://coveralls.io/repos/github/nik-garmash/hyntax/badge.svg?branch=master)
 
 ## Features
 
