@@ -37,8 +37,9 @@ workflows:
     requires:
       - test
     triggers:
-      filters:
-        tags: /^v\d+\.\d+\.\d+$/
+      - schedule:
+          filters:
+            tags: /^v\d+\.\d+\.\d+$/
     jobs:
       - coverage
 
