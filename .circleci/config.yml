@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install
+          command: npm i
+      - run:
           name: coverage
           command: |
             npm run coverage
