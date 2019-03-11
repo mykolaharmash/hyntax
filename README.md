@@ -10,65 +10,67 @@ Straightforward HTML parser for Node.js and browser.
 
 ![npm version number v1.0.5](https://img.shields.io/npm/v/hyntax.svg) ![Coverage Status](https://coveralls.io/repos/github/nik-garmash/hyntax/badge.svg?branch=master)
 
-
-
 ## Features
 
-- Separate tokenizer and tree constructor
+-   Separate tokenizer and tree constructor
 
-  You can import and use both modules separately or in combination.
+    You can import and use both modules separately or in combination.
 
-- Streaming
+-   Streaming
 
-  Can process HTML in chunks.
+    Can process HTML in chunks.
 
-- Works in Node.js and browser
+-   Works in Node.js and browser
 
-- Forgiving
+-   Forgiving
 
-  Just like a browser, normally parses invalid HTML.
+    Just like a browser, normally parses invalid HTML.
 
-- Zero dependencies
+-   Zero dependencies
 
-  Hyntax is written from scratch as a case-study. Compressed bundle for a browser is just 4.7KB.
+    Hyntax is written from scratch as a case-study. Compressed bundle for a browser is just 4.7KB.
 
-- Not just a set of RegExp's
+-   Not just a set of RegExp's
 
-  It's a legit [parser](https://en.wikipedia.org/wiki/Parsing). Code base is flexible and easy to maintain.
-
-  ​
+    It's a legit [parser](https://en.wikipedia.org/wiki/Parsing). Code base is flexible and easy to maintain.
 
 ## Table Of Contents
 
-<!-- toc -->
+-   [Usage](#usage)
 
-- [Usage](#usage)
-- [Bundling For a Browser](#bundling-for-a-browser)
-- [Streaming](#streaming)
-- [Performance](#performance)
-- [Tokenizer](#tokenizer)
-    + [Interface](#interface)
-    + [Arguments](#arguments)
-    + [Returns](#returns)
-- [Tokens](#tokens)
-- [Tree Constructor](#tree-constructor)
-    + [Interface](#interface-1)
-    + [Arguments](#arguments-1)
-    + [Returns](#returns-1)
-- [AST Format](#ast-format)
-    + [Types of Nodes](#types-of-nodes)
-    + [Node Object](#node-object)
-    + [Document Node](#document-node)
-    + [Doctype Node](#doctype-node)
-    + [Text Node](#text-node)
-    + [Tag Node](#tag-node)
-    + [Comment](#comment)
-    + [Script Node](#script-node)
-    + [Style Node](#style-node)
-    + [Doctype Attribute](#doctype-attribute)
-    + [Tag Attribute](#tag-attribute)
+-   [Bundling For a Browser](#bundling-for-a-browser)
 
-<!-- tocstop -->
+-   [Streaming](#streaming)
+
+-   [Performance](#performance)
+
+-   [Tokenizer](#tokenizer)
+
+    -   -   [Interface](#interface)
+        -   [Arguments](#arguments)
+        -   [Returns](#returns)
+
+-   [Tokens](#tokens)
+
+-   [Tree Constructor](#tree-constructor)
+
+    -   -   [Interface](#interface-1)
+        -   [Arguments](#arguments-1)
+        -   [Returns](#returns-1)
+
+-   [AST Format](#ast-format)
+
+    -   -   [Types of Nodes](#types-of-nodes)
+        -   [Node Object](#node-object)
+        -   [Document Node](#document-node)
+        -   [Doctype Node](#doctype-node)
+        -   [Text Node](#text-node)
+        -   [Tag Node](#tag-node)
+        -   [Comment](#comment)
+        -   [Script Node](#script-node)
+        -   [Style Node](#style-node)
+        -   [Doctype Attribute](#doctype-attribute)
+        -   [Tag Attribute](#tag-attribute)
 
 ## Usage
 
@@ -96,8 +98,6 @@ console.log(JSON.stringify(tokens, null, 2))
 console.log(util.inspect(ast, { showHidden: false, depth: null }))
 ```
 
-
-
 ## Bundling For a Browser
 
 You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify.
@@ -114,11 +114,9 @@ import StreamTokenizer from 'hyntax/lib/stream-tokenizer'
 import StreamTreeConstructor from 'hyntax/lib/stream-tree-constructor'
 ```
 
-
-
 ## Streaming
 
-Use ```StreamTokenizer``` and ```StreamTreeConstructor``` classes to parse HTML chunk by chunk while it's still being loaded from the network or read from the disk.
+Use `StreamTokenizer` and `StreamTreeConstructor` classes to parse HTML chunk by chunk while it's still being loaded from the network or read from the disk.
 
 ```javascript
 const { StreamTokenizer, StreamTreeConstructor } = require('hyntax')
@@ -154,24 +152,18 @@ http.get('http://info.cern.ch', (res) => {
 })
 ```
 
-
-
 ## Performance
 
 Here are timings for parsing main pages of some popular sites.
 
 Mesured on my MacBook Pro (2,5 GHz Core i7, 16 GB) with Node.js v8.9.1.
 
-```
-google.com (12KB) — 6.2061 ms
-github.com (51KB) — 17.7546 ms
-wikipedia.org (74KB) — 21.5237 ms
-reddit.com (183KB) — 48.1990 ms
-facebook.com (336KB) — 90.8315 ms
-youtube.com (500KB) — 134.34459 ms
-```
-
-
+    google.com (12KB) — 6.2061 ms
+    github.com (51KB) — 17.7546 ms
+    wikipedia.org (74KB) — 21.5237 ms
+    reddit.com (183KB) — 48.1990 ms
+    facebook.com (336KB) — 90.8315 ms
+    youtube.com (500KB) — 134.34459 ms
 
 ## Tokenizer
 
@@ -183,34 +175,34 @@ Hyntax has its tokenizer as a separate module. You can use generated tokens on t
 tokenize(html<String>, [existingState<Object>], [options<Object>])
 ```
 
-For most use-cases, single ```html``` argument is sufficient.
+For most use-cases, single `html` argument is sufficient.
 
-All other arguments are needed only for stream parsing and being used internally by ```StreamTokenizer``` class. You should worry about those only if you're going to have a custom implementation of stream tokenizer.
+All other arguments are needed only for stream parsing and being used internally by `StreamTokenizer` class. You should worry about those only if you're going to have a custom implementation of stream tokenizer.
 
 #### Arguments
 
-* ```html<String>```
+-   `html<String>`
 
-  Required.
+    Required.
 
-  HTML string to process
+    HTML string to process
 
 
-* ```existingState<Object>```
+-   `existingState<Object>`
 
-  Optional.
+    Optional.
 
-  When the input is coming in chunks and multiple calls of ```tokenize(chunk)``` are required, the ```existingState``` parameter is used to pass a result of previous call.
+    When the input is coming in chunks and multiple calls of `tokenize(chunk)` are required, the `existingState` parameter is used to pass a result of previous call.
 
-  Default value — ```undefined```.
+    Default value — `undefined`.
 
-* ```options.isFinalChunk<Boolean>```
+-   `options.isFinalChunk<Boolean>`
 
-  Optional.
+    Optional.
 
-  A signal that current input chunk is the last one. Used for creating of the last token which does not have an explicit ending. For example when the input is interrupted in the middle of a tag content without reaching closing tag.
+    A signal that current input chunk is the last one. Used for creating of the last token which does not have an explicit ending. For example when the input is interrupted in the middle of a tag content without reaching closing tag.
 
-  Default value — ```true```
+    Default value — `true`
 
 #### Returns
 
@@ -218,16 +210,13 @@ All other arguments are needed only for stream parsing and being used internally
 tokenize(html) → { state<Object>, tokens<Array> }
 ```
 
-* ```state<Object>```
+-   `state<Object>`
 
-  The current state of tokenizer. It can be persisted and passed to the next tokenizer call if the input is coming in chunks.
+    The current state of tokenizer. It can be persisted and passed to the next tokenizer call if the input is coming in chunks.
 
-* ```tokens<Array>```
+-   `tokens<Array>`
 
-  Array of resulting tokens.
-
-
-
+    Array of resulting tokens.
 
 ## Tokens
 
@@ -246,24 +235,21 @@ Each token is an object with several properties
 }
 ```
 
-* ```type<String>```
+-   `type<String>`
 
-  One of the type constants from [lib/constants/token-types.js](https://github.com/nik-garmash/hyntax/blob/master/lib/constants/token-types.js).
+    One of the type constants from [lib/constants/token-types.js](https://github.com/nik-garmash/hyntax/blob/master/lib/constants/token-types.js).
 
-* ```content<String>```
+-   `content<String>`
 
-  Piece of original HTML input which was recognized as a token.
+    Piece of original HTML input which was recognized as a token.
 
-* ```startPosition<Number>```
+-   `startPosition<Number>`
 
-  Index of a character in the input HTML string where token starts.
+    Index of a character in the input HTML string where token starts.
 
-* ```endPosition<Number>```
+-   `endPosition<Number>`
 
-  Index of a character in the input HTML string where the token ends.
-
-
-
+    Index of a character in the input HTML string where the token ends.
 
 ## Tree Constructor
 
@@ -275,23 +261,23 @@ After you've got an array of tokens, you can pass them into tree constructor to 
 constructTree(tokens<Array>, [existingState<Object>])
 ```
 
-For most use-cases, single ```tokens``` argument is sufficient.
+For most use-cases, single `tokens` argument is sufficient.
 
-```existingState``` argument is used internally by ```StreamTreeConstructor``` . You need to worry about it only if you're going to implement custom stream tree constructor.
+`existingState` argument is used internally by `StreamTreeConstructor` . You need to worry about it only if you're going to implement custom stream tree constructor.
 
 #### Arguments
 
-- ```tokens<Array>```
+-   `tokens<Array>`
 
-  Required.
+    Required.
 
-  Array of tokens received from the tokenizer.
+    Array of tokens received from the tokenizer.
 
-- ```existingState<Object>```
+-   `existingState<Object>`
 
-  Optional.
+    Optional.
 
-  State, returned by the previous ```constructTree(tokens)``` call. Makes possible to build AST incrementally in case the tokens come in chunks.
+    State, returned by the previous `constructTree(tokens)` call. Makes possible to build AST incrementally in case the tokens come in chunks.
 
 #### Returns
 
@@ -299,16 +285,13 @@ For most use-cases, single ```tokens``` argument is sufficient.
 constructTree(tokens) → { state<Object>, ast<Object> }
 ```
 
-- ```state<Object>```
+-   `state<Object>`
 
-  The current state of the tree constructor. Can be persisted and passed to the next tree constructor call in case when tokens are coming in chunks.
+    The current state of the tree constructor. Can be persisted and passed to the next tree constructor call in case when tokens are coming in chunks.
 
-- ```ast<Object>```
+-   `ast<Object>`
 
-  Resulting AST.
-
-
-
+    Resulting AST.
 
 ## AST Format
 
@@ -342,13 +325,13 @@ Here is a brief example.
 
 There are 7 node types:
 
-- Document
-- Doctype
-- Text
-- Tag
-- Comment
-- Script
-- Style
+-   Document
+-   Doctype
+-   Text
+-   Tag
+-   Comment
+-   Script
+-   Style
 
 #### Node Object
 
@@ -361,13 +344,13 @@ Each node has the same interface.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-  One of the type constants from [lib/constants/ast-nodes.js](https://github.com/nik-garmash/hyntax/blob/master/lib/constants/ast-nodes.js).
+    One of the type constants from [lib/constants/ast-nodes.js](https://github.com/nik-garmash/hyntax/blob/master/lib/constants/ast-nodes.js).
 
-- ```content<Object>```
+-   `content<Object>`
 
-  Object with a different set of properties depending on the node type. See nodes descriptions to see the content interface for a specific type of node.
+    Object with a different set of properties depending on the node type. See nodes descriptions to see the content interface for a specific type of node.
 
 #### Document Node
 
@@ -382,11 +365,11 @@ Root node of the AST.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-- ```content.children<Array>```
+-   `content.children<Array>`
 
-  Array of nested nodes.
+    Array of nested nodes.
 
 #### Doctype Node
 
@@ -401,21 +384,21 @@ Root node of the AST.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-- ```content.start<Token>```
+-   `content.start<Token>`
 
-  Original token object of a doctype beginning.
+    Original token object of a doctype beginning.
 
-- ```content.attributes<Array>```
+-   `content.attributes<Array>`
 
-  Optional.
+    Optional.
 
-  Array of the [doctype attribute objects](#doctype-attribute).
+    Array of the [doctype attribute objects](#doctype-attribute).
 
-- ```end<Token>```
+-   `end<Token>`
 
-  Original token object of a doctype ending.
+    Original token object of a doctype ending.
 
 #### Text Node
 
@@ -428,11 +411,11 @@ Root node of the AST.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-- ```content.value<Token>```
+-   `content.value<Token>`
 
-  Original token object of a text.
+    Original token object of a text.
 
 #### Tag Node
 
@@ -451,39 +434,39 @@ Root node of the AST.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-- ```content.name<String>```
+-   `content.name<String>`
 
-  Name of a tag in lowercase.
+    Name of a tag in lowercase.
 
-- ```content.selfClosing<Boolean>```
+-   `content.selfClosing<Boolean>`
 
-  Signals if a tag is one of the self-closing [void elements](https://www.w3.org/TR/html5/syntax.html#void-elements)
+    Signals if a tag is one of the self-closing [void elements](https://www.w3.org/TR/html5/syntax.html#void-elements)
 
-- ```content.openStart<Token>```
+-   `content.openStart<Token>`
 
-  Original token object of the beginning of an opening tag.
+    Original token object of the beginning of an opening tag.
 
-- ```content.attributes<Array>```
+-   `content.attributes<Array>`
 
-  Optional.
+    Optional.
 
-  Array of [tag attribute objects](#tag-attribute).
+    Array of [tag attribute objects](#tag-attribute).
 
-- ```content.openEnd<Token>```
+-   `content.openEnd<Token>`
 
-  Token of an opening tag ending.
+    Token of an opening tag ending.
 
-- ```content.children<Array>```
+-   `content.children<Array>`
 
-  Optional.
+    Optional.
 
-  Array of children nodes in case a tag has nested content.
+    Array of children nodes in case a tag has nested content.
 
-- ```content.close<Token>```
+-   `content.close<Token>`
 
-  Token of a matching closing tag.
+    Token of a matching closing tag.
 
 #### Comment
 
@@ -498,19 +481,19 @@ Root node of the AST.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-- ```content.start<Token>```
+-   `content.start<Token>`
 
-  Token object of the beginning of a comment.
+    Token object of the beginning of a comment.
 
-- ```content.value<Token>```
+-   `content.value<Token>`
 
-  Comment content token object.
+    Comment content token object.
 
-- ```content.end<Token>```
+-   `content.end<Token>`
 
-- Token object of the ending of a comment.
+-   Token object of the ending of a comment.
 
 #### Script Node
 
@@ -527,29 +510,29 @@ Root node of the AST.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-- ```content.openStart<Token>```
+-   `content.openStart<Token>`
 
-  Token object of the beginning of an opening tag.
+    Token object of the beginning of an opening tag.
 
-- ```content.attributes<Array>```
+-   `content.attributes<Array>`
 
-  Optional.
+    Optional.
 
-  Array of [tag attribute objects](#tag-attribute).
+    Array of [tag attribute objects](#tag-attribute).
 
-- ```content.openEnd<Token>```
+-   `content.openEnd<Token>`
 
-  Token object of an opening tag ending.
+    Token object of an opening tag ending.
 
-- ```content.value<Token>```
+-   `content.value<Token>`
 
-  Token object of a script content.
+    Token object of a script content.
 
-- ```content.close<Token>```
+-   `content.close<Token>`
 
-  Token of a script's closing tag.
+    Token of a script's closing tag.
 
 #### Style Node
 
@@ -566,33 +549,33 @@ Root node of the AST.
 }
 ```
 
-- ```nodeType<String>```
+-   `nodeType<String>`
 
-- ```content.openStart<Token>```
+-   `content.openStart<Token>`
 
-  Token object of a beginning of an opening tag.
+    Token object of a beginning of an opening tag.
 
-- ```content.attributes<Array>```
+-   `content.attributes<Array>`
 
-  Optional.
+    Optional.
 
-  Array of [tag attribute objects](#tag-attribute).
+    Array of [tag attribute objects](#tag-attribute).
 
-- ```content.openEnd<Token>```
+-   `content.openEnd<Token>`
 
-  Token object of an opening tag ending.
+    Token object of an opening tag ending.
 
-- ```content.value<Token>```
+-   `content.value<Token>`
 
-  Token object of a style content.
+    Token object of a style content.
 
-- ```content.close<Token>```
+-   `content.close<Token>`
 
-  Token of a style's closing tag.
+    Token of a style's closing tag.
 
 #### Doctype Attribute
 
-If doctype tag has attributes, its node in AST will have a ```content.attributes<Array>``` property with one or more doctype attribute objects inside.
+If doctype tag has attributes, its node in AST will have a `content.attributes<Array>` property with one or more doctype attribute objects inside.
 
 ```javascript
 {
@@ -602,25 +585,25 @@ If doctype tag has attributes, its node in AST will have a ```content.attributes
 }
 ```
 
-- ```startWrapper<Token>```
+-   `startWrapper<Token>`
 
-  Optional.
+    Optional.
 
-  Token object of a wrapping apostrophe or quotation mark at the beginning of an attribute value.
+    Token object of a wrapping apostrophe or quotation mark at the beginning of an attribute value.
 
-- ```value<Token>```
+-   `value<Token>`
 
-  Token object of an attribute value.
+    Token object of an attribute value.
 
-- ```endWrapper<Token>```
+-   `endWrapper<Token>`
 
-  Optional.
+    Optional.
 
-  Token object of a wrapping apostrophe or quotation mark at the ending of an attribute value.
+    Token object of a wrapping apostrophe or quotation mark at the ending of an attribute value.
 
 #### Tag Attribute
 
-If a tag has attributes, its node in AST will have a ```content.attributes<Array>``` property with one or more tag attribute objects inside.
+If a tag has attributes, its node in AST will have a `content.attributes<Array>` property with one or more tag attribute objects inside.
 
 ```javascript
 {
@@ -631,29 +614,26 @@ If a tag has attributes, its node in AST will have a ```content.attributes<Array
 }
 ```
 
-- ```key<Token>```
+-   `key<Token>`
 
-  Optional.
+    Optional.
 
-  Token object of an attribute key. There is a case when attribute might not have a key but have a value at the same time, it is when an attribute is written like this ```<div =foo></div>```, it's invalid HTML but it's possible.
+    Token object of an attribute key. There is a case when attribute might not have a key but have a value at the same time, it is when an attribute is written like this `<div =foo></div>`, it's invalid HTML but it's possible.
 
-- ```startWrapper<Token>```
+-   `startWrapper<Token>`
 
-  Optional.
+    Optional.
 
-  Token object of a wrapping apostrophe or quotation mark at the beginning of an attribute value.
+    Token object of a wrapping apostrophe or quotation mark at the beginning of an attribute value.
 
-- ```value<Token>```
+-   `value<Token>`
 
-  Optional.
+    Optional.
 
-  Token object of an attribute value. Value is absent for cases like ```<input disabled>```.
+    Token object of an attribute value. Value is absent for cases like `<input disabled>`.
 
-- ```endWrapper<Token>```
+-   `endWrapper<Token>`
 
-  Optional.
+    Optional.
 
-  Token object of a wrapping apostrophe or quotation mark at the ending of an attribute value.
-
-
-
+    Token object of a wrapping apostrophe or quotation mark at the ending of an attribute value.
