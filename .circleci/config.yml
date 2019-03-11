@@ -1,15 +1,45 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: node:10.15.3-alpine
     steps:
       - checkout
       - run:
-          name: install
+          name: Install
           command: npm i
+      - run
+        name: Lint
+        command: npx eslint index.js ./lib/**
       - run:
-          name: coverage
-          command: |
-            npm run coverage
-            npx nyc report --reporter=text-lcov | npx coveralls
+          name: Unit Tests
+          command: npm test
+  coverage:
+    docker:
+      - image: node:10.15.3-alpine
+      steps:
+        - checkout
+        - run:
+            name: Install
+            command: npm i
+        - run:
+            name: Coverage
+            command: |
+              npm run coverage
+              npx nyc report --reporter=text-lcov | npx coveralls
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+  release:
+    requires:
+      - test
+    triggers:
+      filters:
+        tags: /^v\d+\.\d+\.\d+$/
+    jobs:
+      - coverage
+
+
