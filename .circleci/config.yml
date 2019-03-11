@@ -36,6 +36,11 @@ workflows:
   release:
     jobs:
       - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v\d+\.\d+\.\d+$/
       - coverage:
           requires:
             - test
