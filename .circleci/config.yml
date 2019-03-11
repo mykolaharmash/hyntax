@@ -39,7 +39,8 @@ workflows:
     jobs:
       - coverage:
           filters:
-            tags: /^v\d+\.\d+\.\d+$/
+            tags:
+              - /^v\d+\.\d+\.\d+$/
 
 
 
