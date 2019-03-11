@@ -36,11 +36,11 @@ workflows:
   release:
     requires:
       - test
-    triggers:
-      - schedule:
+    jobs:
+      - coverage:
           filters:
             tags: /^v\d+\.\d+\.\d+$/
-    jobs:
-      - coverage
+
+
 
 
