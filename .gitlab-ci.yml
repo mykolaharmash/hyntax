@@ -1,0 +1,10 @@
+image: node:10.15.1-alpine
+
+before_script:
+  - npm i
+
+Unit Tests:
+  stage: test
+  script: npm test
+  only:
+    - merge_requests
