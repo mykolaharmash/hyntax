@@ -1,6 +1,6 @@
 {
   "name": "hyntax",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Straightforward HTML parser for Node.js and browser",
   "keywords": [
     "html",
