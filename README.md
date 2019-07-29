@@ -6,61 +6,35 @@
 
 # Hyntax
 
-Straightforward HTML parser for Node.js and browser.
+Straightforward HTML parser
 
 ![npm version number v1.0.10](https://img.shields.io/npm/v/hyntax.svg) ![Coverage Status](https://coveralls.io/repos/github/nik-garmash/hyntax/badge.svg?branch=master)
 
+
+
 ## Features
 
--   Separate tokenizer and tree constructor
+-   **Forgiving.** Just like a browser, normally parses invalid HTML.
 
-    You can import and use both modules separately or in combination.
+-   **Simple.** API is straightforward, output is clear.
 
--   Streaming
+-   **Zero dependencies.** Compressed bundle for a browser is just 4.7KB.
 
-    Can process HTML in chunks.
+-   **Streaming.** Can process HTML while it's still being loaded.
 
--   Works in Node.js and browser
 
--   Forgiving
-
-    Just like a browser, normally parses invalid HTML.
-
--   Zero dependencies
-
-    Hyntax is written from scratch as a case-study. Compressed bundle for a browser is just 4.7KB.
-
--   Not just a set of RegExp's
-
-    It's a legit [parser](https://en.wikipedia.org/wiki/Parsing). Code base is flexible and easy to maintain.
 
 ## Table Of Contents
 
 -   [Usage](#usage)
--   [Bundling For a Browser](#bundling-for-a-browser)
+-   [TypeScript Typings](#typescript-typings)
 -   [Streaming](#streaming)
--   [Performance](#performance)
--   [Tokenizer](#tokenizer)
-    -   -   [Interface](#interface)
-        -   [Arguments](#arguments)
-        -   [Returns](#returns)
 -   [Tokens](#tokens)
--   [Tree Constructor](#tree-constructor)
-    -   -   [Interface](#interface-1)
-        -   [Arguments](#arguments-1)
-        -   [Returns](#returns-1)
 -   [AST Format](#ast-format)
-    -   -   [Types of Nodes](#types-of-nodes)
-        -   [Node Object](#node-object)
-        -   [Document Node](#document-node)
-        -   [Doctype Node](#doctype-node)
-        -   [Text Node](#text-node)
-        -   [Tag Node](#tag-node)
-        -   [Comment](#comment)
-        -   [Script Node](#script-node)
-        -   [Style Node](#style-node)
-        -   [Doctype Attribute](#doctype-attribute)
-        -   [Tag Attribute](#tag-attribute)
+-   [API Reference](#api-reference)
+-   [Types Reference](#types-reference)
+
+
 
 ## Usage
 
@@ -88,21 +62,11 @@ console.log(JSON.stringify(tokens, null, 2))
 console.log(util.inspect(ast, { showHidden: false, depth: null }))
 ```
 
-## Bundling For a Browser
+## TypeScript Typings
 
-You can bundle Hyntax into your front-end application without any problems with Webpack, Rollup or Browserify.
+Hyntax is written in JavaScript but has [integrated TypeScript typings](./index.d.ts) to help you navigate around its data structures. There is also [Types Reference](#types-reference) which covers most common types.
 
-The single Node.js specific piece of code is the native Node's streams. All mentioned bundlers have a client-side substitute for “stream” module.
 
-All components of Hyntax are separate files, so you can bundle only parts you actually need.
-
-```javascript
-import tokenize from 'hyntax/lib/tokenize'
-import constructTree from 'hyntax/lib/construct-tree'
-
-import StreamTokenizer from 'hyntax/lib/stream-tokenizer'
-import StreamTreeConstructor from 'hyntax/lib/stream-tree-constructor'
-```
 
 ## Streaming
 
@@ -142,488 +106,371 @@ http.get('http://info.cern.ch', (res) => {
 })
 ```
 
-## Performance
 
-Here are timings for parsing main pages of some popular sites.
-
-Mesured on my MacBook Pro (2,5 GHz Core i7, 16 GB) with Node.js v8.9.1.
-
-    google.com (12KB) — 6.2061 ms
-    github.com (51KB) — 17.7546 ms
-    wikipedia.org (74KB) — 21.5237 ms
-    reddit.com (183KB) — 48.1990 ms
-    facebook.com (336KB) — 90.8315 ms
-    youtube.com (500KB) — 134.34459 ms
-
-## Tokenizer
-
-Hyntax has its tokenizer as a separate module. You can use generated tokens on their own or pass them further to a tree constructor to build an AST.
-
-#### Interface
-
-```javascript
-tokenize(html<String>, [existingState<Object>], [options<Object>])
-```
-
-For most use-cases, single `html` argument is sufficient.
-
-All other arguments are needed only for stream parsing and being used internally by `StreamTokenizer` class. You should worry about those only if you're going to have a custom implementation of stream tokenizer.
-
-#### Arguments
-
--   `html<String>`
-
-    Required.
-
-    HTML string to process
-
-
--   `existingState<Object>`
-
-    Optional.
-
-    When the input is coming in chunks and multiple calls of `tokenize(chunk)` are required, the `existingState` parameter is used to pass a result of previous call.
-
-    Default value — `undefined`.
-
--   `options.isFinalChunk<Boolean>`
-
-    Optional.
-
-    A signal that current input chunk is the last one. Used for creating of the last token which does not have an explicit ending. For example when the input is interrupted in the middle of a tag content without reaching closing tag.
-
-    Default value — `true`
-
-#### Returns
-
-```javascript
-tokenize(html) → { state<Object>, tokens<Array> }
-```
-
--   `state<Object>`
-
-    The current state of tokenizer. It can be persisted and passed to the next tokenizer call if the input is coming in chunks.
-
--   `tokens<Array>`
-
-    Array of resulting tokens.
 
 ## Tokens
 
-Here is a high-level overview of all possible tokens.
+Here are all kinds of tokens which Hyntax will extract out of HTML string.
 
 ![Overview of all possible tokens](./tokens-list.png)
 
-Each token is an object with several properties
+Each token conforms to [Tokenizer.Token](#TokenizerToken) interface.
 
-```javascript
-{
-  type: <String>,
-  content: <String>,
-  startPosition: <Number>,
-  endPosition: <Number>
-}
-```
 
--   `type<String>`
-
-    One of the type constants from [lib/constants/token-types.js](https://github.com/nik-garmash/hyntax/blob/master/lib/constants/token-types.js).
-
--   `content<String>`
-
-    Piece of original HTML input which was recognized as a token.
-
--   `startPosition<Number>`
-
-    Index of a character in the input HTML string where token starts.
-
--   `endPosition<Number>`
-
-    Index of a character in the input HTML string where the token ends.
-
-## Tree Constructor
-
-After you've got an array of tokens, you can pass them into tree constructor to build an AST.
-
-#### Interface
-
-```javascript
-constructTree(tokens<Array>, [existingState<Object>])
-```
-
-For most use-cases, single `tokens` argument is sufficient.
-
-`existingState` argument is used internally by `StreamTreeConstructor` . You need to worry about it only if you're going to implement custom stream tree constructor.
-
-#### Arguments
-
--   `tokens<Array>`
-
-    Required.
-
-    Array of tokens received from the tokenizer.
-
--   `existingState<Object>`
-
-    Optional.
-
-    State, returned by the previous `constructTree(tokens)` call. Makes possible to build AST incrementally in case the tokens come in chunks.
-
-#### Returns
-
-```javascript
-constructTree(tokens) → { state<Object>, ast<Object> }
-```
-
--   `state<Object>`
-
-    The current state of the tree constructor. Can be persisted and passed to the next tree constructor call in case when tokens are coming in chunks.
-
--   `ast<Object>`
-
-    Resulting AST.
 
 ## AST Format
 
-Hyntax AST is a tree of nested nodes which reflects the structure of original HTML.
+Resulting syntax tree will have at least one top-level [Document Node](#ast-node-types) with optional children nodes nested within.
 
 <!-- You can play around with the [AST Explorer](https://astexplorer.net) to see how AST looks like. -->
 
-Here is a brief example.
-
 ```javascript
 {
-  nodeType: <String>,
+  nodeType: TreeConstructor.NodeTypes.Document,
   content: {
     children: [
       {
-        nodeType: <String>,
+        nodeType: TreeConstructor.NodeTypes.AnyNodeType,
         content: {…}
       },
       {
-        nodeType: <String>,
-        content: {
-          children: […]
-        }
+        nodeType: TreeConstructor.NodeTypes.AnyNodeType,
+        content: {…}
       }
     ]
   }
 }
 ```
 
-#### Types of Nodes
+Content of each node is specific to node's type, all of them are described in [AST Node Types](#ast-node-types) reference.
 
-There are 7 node types:
 
--   Document
--   Doctype
--   Text
--   Tag
--   Comment
--   Script
--   Style
 
-#### Node Object
+## API Reference
 
-Each node has the same interface.
+### Tokenizer
 
-```javascript
-{
-  nodeType: <String>,
-  content: <Object>
+Hyntax has its tokenizer as a separate module. You can use generated tokens on their own or pass them further to a tree constructor to build an AST.
+
+#### Interface
+
+```typescript
+tokenize(html: String): Tokenizer.Result
+```
+
+#### Arguments
+
+-   `html`  
+HTML string to process  
+  Required.  
+Type: string.
+
+#### Returns [Tokenizer.Result](#TokenizerResult)
+
+### Tree Constructor
+
+After you've got an array of tokens, you can pass them into tree constructor to build an AST.
+
+#### Interface
+
+```typescript
+constructTree(tokens: Tokenizer.AnyToken[]): TreeConstructor.Result
+```
+
+#### Arguments
+
+-   `tokens`  
+Array of tokens received from the tokenizer.  
+  Required.  
+Type: [Tokenizer.AnyToken[]](#tokenizeranytoken)
+
+#### Returns [TreeConstructor.Result](#TreeConstructorResult)
+
+
+
+## Types Reference
+
+#### Tokenizer.Result
+
+```typescript
+interface Result {
+  state: Tokenizer.State
+  tokens: Tokenizer.AnyToken[]
 }
 ```
 
--   `nodeType<String>`
+-   `state`   
+The current state of tokenizer. It can be persisted and passed to the next tokenizer call if the input is coming in chunks.
+-   `tokens`  
+  Array of resulting tokens.  
+  Type: [Tokenizer.AnyToken[]](#tokenizeranytoken)
 
-    One of the type constants from [lib/constants/ast-nodes.js](https://github.com/nik-garmash/hyntax/blob/master/lib/constants/ast-nodes.js).
+#### TreeConstructor.Result
 
--   `content<Object>`
-
-    Object with a different set of properties depending on the node type. See nodes descriptions to see the content interface for a specific type of node.
-
-#### Document Node
-
-Root node of the AST.
-
-```javascript
-{
-  nodeType: <String>,
-  content: {
-    children: <Array>
-  }
+```typescript
+interface Result {
+  state: State
+  ast: AST
 }
 ```
 
--   `nodeType<String>`
+-   `state`  
+The current state of the tree constructor. Can be persisted and passed to the next tree constructor call in case when tokens are coming in chunks.
+  
+-   `ast`  
+  Resulting AST.  
+  Type: [TreeConstructor.AST](#treeconstructorast)  
 
--   `content.children<Array>`
+#### Tokenizer.Token
 
-    Array of nested nodes.
+Generic Token, other interfaces use it to create a specific Token type.
 
-#### Doctype Node
-
-```javascript
-{
-  nodeType: <String>,
-  content: {
-    start: <Token>,
-    attributes?: <Array>,
-    end: <Token>
-  }
+```typescript
+interface Token<T extends TokenTypes.AnyTokenType> {
+  type: T
+  content: string
+  startPosition: number
+  endPosition: number
 }
 ```
 
--   `nodeType<String>`
+-   `type`  
+One of the [Token types](#TokenizerTokenTypesAnyTokenType).
+  
+-   `content `   
+Piece of original HTML string which was recognized as a token.
+  
+-   `startPosition `   
+Index of a character in the input HTML string where the token starts.
+  
+-   `endPosition`  
+Index of a character in the input HTML string where the token ends.
 
--   `content.start<Token>`
+#### Tokenizer.TokenTypes.AnyTokenType
 
-    Original token object of a doctype beginning.
+Shortcut type of all possible tokens.
 
--   `content.attributes<Array>`
+```typescript
+type AnyTokenType =
+  | Text
+  | OpenTagStart
+  | AttributeKey
+  | AttributeAssigment
+  | AttributeValueWrapperStart
+  | AttributeValue
+  | AttributeValueWrapperEnd
+  | OpenTagEnd
+  | CloseTag
+  | OpenTagStartScript
+  | ScriptTagContent
+  | OpenTagEndScript
+  | CloseTagScript
+  | OpenTagStartStyle
+  | StyleTagContent
+  | OpenTagEndStyle
+  | CloseTagStyle
+  | DoctypeStart
+  | DoctypeEnd
+  | DoctypeAttributeWrapperStart
+  | DoctypeAttribute
+  | DoctypeAttributeWrapperEnd
+  | CommentStart
+  | CommentContent
+  | CommentEnd
+```
 
-    Optional.
+#### Tokenizer.AnyToken
 
-    Array of the [doctype attribute objects](#doctype-attribute).
+Shortcut to reference any possible token.
 
--   `end<Token>`
+```typescript
+type AnyToken = Token<TokenTypes.AnyTokenType>
+```
 
-    Original token object of a doctype ending.
+#### TreeConstructor.AST
 
-#### Text Node
+Just an alias to DocumentNode. AST always has one top-level DocumentNode. See [AST Node Types](#ast-node-types)
 
-```javascript
-{
-  nodeType: <String>,
-  content: {
-    value: <Token>
-  }
+```typescript
+type AST = TreeConstructor.DocumentNode
+```
+
+### AST Node Types
+
+There are 7 possible types of Node. Each type has a specific content.
+
+```typescript
+type DocumentNode = Node<NodeTypes.Document, NodeContents.Document>	
+```
+
+```typescript
+type DoctypeNode = Node<NodeTypes.Doctype, NodeContents.Doctype>
+```
+
+```typescript
+type TextNode = Node<NodeTypes.Text, NodeContents.Text>
+```
+
+```typescript
+type TagNode = Node<NodeTypes.Tag, NodeContents.Tag>
+```
+
+```typescript
+type CommentNode = Node<NodeTypes.Comment, NodeContents.Comment>
+```
+
+```typescript
+type ScriptNode = Node<NodeTypes.Script, NodeContents.Script>
+```
+
+```typescript
+type StyleNode = Node<NodeTypes.Style, NodeContents.Style>
+```
+
+Interfaces for each content type:
+
+- [Document](#TreeConstructorNodeContentsDocument)
+- [Doctype](#TreeConstructorNodeContentsDoctype)
+- [Text](#TreeConstructorNodeContentsText)
+- [Tag](#TreeConstructorNodeContentsTag)
+- [Comment](#TreeConstructorNodeContentsComment)
+- [Script](#TreeConstructorNodeContentsScript)
+- [Style](#TreeConstructorNodeContentsStyle)
+
+#### TreeConstructor.Node
+
+Generic Node, other interfaces use it to create specific Nodes by providing type of Node and type of the content inside the Node.
+
+```typescript
+interface Node<T extends NodeTypes.AnyNodeType, C extends NodeContents.AnyNodeContent> {
+  nodeType: T
+  content: C
 }
 ```
 
--   `nodeType<String>`
+#### TreeConstructor.NodeTypes.AnyNodeType
 
--   `content.value<Token>`
+Shortcut type of all possible Node types.
 
-    Original token object of a text.
+```typescript
+type AnyNodeType =
+  | Document
+  | Doctype
+  | Tag
+  | Text
+  | Comment
+  | Script
+  | Style
+```
 
-#### Tag Node
+### Node Content Types
 
-```javascript
-{
-  nodeType: <String>,
-  content: {
-    name: <String>,
-    selfClosing: <Boolean>,
-    openStart: <Token>,
-    attributes?: <Array>,
-    openEnd: <Token>,
-    children?: <Array>,
-    close: <Token>
-  }
+#### TreeConstructor.NodeTypes.AnyNodeContent
+
+Shortcut type of all possible types of content inside a Node.
+
+```typescript
+type AnyNodeContent =
+  | Document
+  | Doctype
+  | Text
+  | Tag
+  | Comment
+  | Script
+  | Style
+```
+
+#### TreeConstructor.NodeContents.Document
+
+```typescript
+interface Document {
+  children: AnyNode
 }
 ```
 
--   `nodeType<String>`
+#### TreeConstructor.NodeContents.Doctype
 
--   `content.name<String>`
-
-    Name of a tag in lowercase.
-
--   `content.selfClosing<Boolean>`
-
-    Signals if a tag is one of the self-closing [void elements](https://www.w3.org/TR/html5/syntax.html#void-elements)
-
--   `content.openStart<Token>`
-
-    Original token object of the beginning of an opening tag.
-
--   `content.attributes<Array>`
-
-    Optional.
-
-    Array of [tag attribute objects](#tag-attribute).
-
--   `content.openEnd<Token>`
-
-    Token of an opening tag ending.
-
--   `content.children<Array>`
-
-    Optional.
-
-    Array of children nodes in case a tag has nested content.
-
--   `content.close<Token>`
-
-    Token of a matching closing tag.
-
-#### Comment
-
-```javascript
-{
-  nodeType: <String>,
-  content: {
-    start: <Token>,
-    value: <Token>,
-    end: <Token>
-  }
+```typescript
+interface Doctype {
+  start: Tokenizer.Token<Tokenizer.TokenTypes.DoctypeStart>
+  attributes?: DoctypeAttribute[]
+  end: Tokenizer.Token<Tokenizer.TokenTypes.DoctypeEnd>
 }
 ```
 
--   `nodeType<String>`
+#### TreeConstructor.NodeContents.Text
 
--   `content.start<Token>`
-
-    Token object of the beginning of a comment.
-
--   `content.value<Token>`
-
-    Comment content token object.
-
--   `content.end<Token>`
-
--   Token object of the ending of a comment.
-
-#### Script Node
-
-```javascript
-{
-  nodeType: <String>,
-  content: {
-    openStart: <Token>,
-    attributes?: <Array>,
-    openEnd: <Token>,
-    value: <Token>,
-    close: <Token>
-  }
+```typescript
+interface Text {
+  value: Tokenizer.Token<Tokenizer.TokenTypes.Text>
 }
 ```
 
--   `nodeType<String>`
+#### TreeConstructor.NodeContents.Tag
 
--   `content.openStart<Token>`
-
-    Token object of the beginning of an opening tag.
-
--   `content.attributes<Array>`
-
-    Optional.
-
-    Array of [tag attribute objects](#tag-attribute).
-
--   `content.openEnd<Token>`
-
-    Token object of an opening tag ending.
-
--   `content.value<Token>`
-
-    Token object of a script content.
-
--   `content.close<Token>`
-
-    Token of a script's closing tag.
-
-#### Style Node
-
-```javascript
-{
-  nodeType: <String>,
-  content: {
-    openStart: <Token>,
-    attributes?: <Array>,
-    openEnd: <Token>,
-    value: <Token>,
-    close: <Token>
-  }
+```typescript
+interface Tag {
+  name: string
+  selfClosing: boolean
+  openStart: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagStart>
+  attributes?: TagAttribute[]
+  openEnd: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagEnd>
+  children?: AnyNode
+  close: Tokenizer.Token<Tokenizer.TokenTypes.CloseTag>
 }
 ```
 
--   `nodeType<String>`
+#### TreeConstructor.NodeContents.Comment
 
--   `content.openStart<Token>`
-
-    Token object of a beginning of an opening tag.
-
--   `content.attributes<Array>`
-
-    Optional.
-
-    Array of [tag attribute objects](#tag-attribute).
-
--   `content.openEnd<Token>`
-
-    Token object of an opening tag ending.
-
--   `content.value<Token>`
-
-    Token object of a style content.
-
--   `content.close<Token>`
-
-    Token of a style's closing tag.
-
-#### Doctype Attribute
-
-If doctype tag has attributes, its node in AST will have a `content.attributes<Array>` property with one or more doctype attribute objects inside.
-
-```javascript
-{
-  startWrapper?: <Token>,
-  value: <Token>,
-  endWrapper?: <Token>
+```typescript
+interface Comment {
+  start: Tokenizer.Token<Tokenizer.TokenTypes.CommentStart>
+  value: Tokenizer.Token<Tokenizer.TokenTypes.CommentContent>
+  end: Tokenizer.Token<Tokenizer.TokenTypes.CommentEnd>
 }
 ```
 
--   `startWrapper<Token>`
+#### TreeConstructor.NodeContents.Script
 
-    Optional.
-
-    Token object of a wrapping apostrophe or quotation mark at the beginning of an attribute value.
-
--   `value<Token>`
-
-    Token object of an attribute value.
-
--   `endWrapper<Token>`
-
-    Optional.
-
-    Token object of a wrapping apostrophe or quotation mark at the ending of an attribute value.
-
-#### Tag Attribute
-
-If a tag has attributes, its node in AST will have a `content.attributes<Array>` property with one or more tag attribute objects inside.
-
-```javascript
-{
-  key?: <Token>,
-  startWrapper?: <Token>,
-  value?: <Token>,
-  endWrapper?: <Token>
+```typescript
+interface Script {
+  openStart: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagStartScript>
+  attributes?: TagAttribute[]
+  openEnd: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagEndScript>
+  value: Tokenizer.Token<Tokenizer.TokenTypes.ScriptTagContent>
+  close: Tokenizer.Token<Tokenizer.TokenTypes.CloseTagScript>
 }
 ```
 
--   `key<Token>`
+#### TreeConstructor.NodeContents.Style
 
-    Optional.
+```typescript
+interface Style {
+  openStart: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagStartStyle>,
+  attributes?: TagAttribute[],
+  openEnd: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagEndStyle>,
+  value: Tokenizer.Token<Tokenizer.TokenTypes.StyleTagContent>,
+  close: Tokenizer.Token<Tokenizer.TokenTypes.CloseTagStyle>
+}
+```
 
-    Token object of an attribute key. There is a case when attribute might not have a key but have a value at the same time, it is when an attribute is written like this `<div =foo></div>`, it's invalid HTML but it's possible.
+#### TreeConstructor.DoctypeAttribute
 
--   `startWrapper<Token>`
+```typescript
+interface DoctypeAttribute {
+  startWrapper?: Tokenizer.Token<Tokenizer.TokenTypes.DoctypeAttributeWrapperStart>,
+  value: Tokenizer.Token<Tokenizer.TokenTypes.DoctypeAttribute>,
+  endWrapper?: Tokenizer.Token<Tokenizer.TokenTypes.DoctypeAttributeWrapperEnd>
+}
+```
 
-    Optional.
+#### TreeConstructor.TagAttribute
 
-    Token object of a wrapping apostrophe or quotation mark at the beginning of an attribute value.
-
--   `value<Token>`
-
-    Optional.
-
-    Token object of an attribute value. Value is absent for cases like `<input disabled>`.
-
--   `endWrapper<Token>`
-
-    Optional.
-
-    Token object of a wrapping apostrophe or quotation mark at the ending of an attribute value.
+```typescript
+interface TagAttribute {
+  key?: Tokenizer.Token<Tokenizer.TokenTypes.AttributeKey>,
+  startWrapper?: Tokenizer.Token<Tokenizer.TokenTypes.AttributeValueWrapperStart>,
+  value?: Tokenizer.Token<Tokenizer.TokenTypes.AttributeValue>,
+  endWrapper?: Tokenizer.Token<Tokenizer.TokenTypes.AttributeValueWrapperEnd>
+}
+```

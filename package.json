@@ -16,7 +16,11 @@
     "tokenize",
     "tokenizer",
     "stream parsing",
-    "stream parser"
+    "stream parser",
+    "typescript",
+    "types",
+    "node.js",
+    "node.js html parser"
   ],
   "repository": {
     "type": "git",
@@ -54,6 +58,5 @@
     "remark-toc": "^5.1.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0"
-  },
-  "dependencies": {}
+  }
 }
