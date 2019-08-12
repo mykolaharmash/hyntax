@@ -8,10 +8,6 @@
 
 Straightforward HTML parser for JavaScript.
 
-
-
-## Features
-
 -   **Forgiving.** Just like a browser, normally parses invalid HTML.
 
 -   **Simple.** API is straightforward, output is clear.
