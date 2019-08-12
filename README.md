@@ -6,9 +6,7 @@
 
 # Hyntax
 
-Straightforward HTML parser
-
-![npm version number v1.0.10](https://img.shields.io/npm/v/hyntax.svg) ![Coverage Status](https://coveralls.io/repos/github/nik-garmash/hyntax/badge.svg?branch=master)
+Straightforward HTML parser for JavaScript.
 
 
 
@@ -18,9 +16,9 @@ Straightforward HTML parser
 
 -   **Simple.** API is straightforward, output is clear.
 
--   **Zero dependencies.** Compressed bundle for a browser is just 4.7KB.
+-   **No dependencies.** Compressed bundle for a browser is just 4.7KB.
 
--   **Streaming.** Can process HTML while it's still being loaded.
+-   **Supports streaming.** Can process HTML while it's still being loaded.
 
 
 
