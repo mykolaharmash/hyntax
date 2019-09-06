@@ -193,7 +193,7 @@ export namespace TreeConstructor {
 
   namespace NodeContents {
     interface Document {
-      children: AnyNode
+      children: AnyNode[]
     }
 
     interface Doctype {
@@ -212,7 +212,7 @@ export namespace TreeConstructor {
       openStart: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagStart>
       attributes?: TagAttribute[]
       openEnd: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagEnd>
-      children?: AnyNode
+      children?: AnyNode[]
       close: Tokenizer.Token<Tokenizer.TokenTypes.CloseTag>
     }
 
