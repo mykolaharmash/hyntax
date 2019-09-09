@@ -378,7 +378,7 @@ type AnyNodeContent =
 
 ```typescript
 interface Document {
-  children: AnyNode
+  children: AnyNode[]
 }
 ```
 
@@ -409,7 +409,7 @@ interface Tag {
   openStart: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagStart>
   attributes?: TagAttribute[]
   openEnd: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagEnd>
-  children?: AnyNode
+  children?: AnyNode[]
   close: Tokenizer.Token<Tokenizer.TokenTypes.CloseTag>
 }
 ```
