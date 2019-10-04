@@ -1,3 +1,5 @@
+import { Transform } from 'stream'
+
 declare function tokenize(
   html: string,
   existingState?: Tokenizer.State,
@@ -8,6 +10,10 @@ declare function constructTree(
   tokens: Tokenizer.AnyToken[],
   existingState?: TreeConstructor.State
 ): TreeConstructor.Result
+
+declare class StreamTokenizer extends Transform {}
+
+declare class StreamTreeConstructor extends Transform {}
 
 export namespace Tokenizer {
   namespace ContextTypes {
