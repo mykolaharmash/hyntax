@@ -6,15 +6,12 @@
 
 # Hyntax
 
-Straightforward HTML parser for JavaScript.
-
--   **Forgiving.** Just like a browser, normally parses invalid HTML.
+Straightforward HTML parser for JavaScript. [Live Demo](https://astexplorer.net/#/gist/6bf7f78077333cff124e619aebfb5b42/latest).
 
 -   **Simple.** API is straightforward, output is clear.
-
--   **No dependencies.** Compressed bundle for a browser is just 4.7KB.
-
+-   **Forgiving.** Just like a browser, normally parses invalid HTML.
 -   **Supports streaming.** Can process HTML while it's still being loaded.
+-   **No dependencies.**
 
 
 
