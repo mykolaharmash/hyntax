@@ -24,10 +24,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:nik-garmash/hyntax.git"
+    "url": "git@github.com:mykolaharmash/hyntax.git"
   },
-  "homepage": "https://github.com/nik-garmash/hyntax",
-  "bugs": "https://github.com/nik-garmash/hyntax/issues",
+  "homepage": "https://github.com/mykolaharmash/hyntax",
+  "bugs": "https://github.com/mykolaharmash/hyntax/issues",
   "main": "./index.js",
   "scripts": {
     "test": "tape ${TEST:-'./tests/**/*.test.js'} | tap-spec",
@@ -36,9 +36,9 @@
     "prepublishOnly": "babel index.js --out-file index.es5.js && babel lib --out-dir lib-es5"
   },
   "author": {
-    "name": "Nikolay Garmash",
-    "email": "garmash.nikolay@gmail.com",
-    "url": "https://nikgarmash.com"
+    "name": "Mykola Harmash",
+    "email": "mykola.harmash@gmail.com",
+    "url": "https://stse.io"
   },
   "license": "MIT",
   "private": false,
