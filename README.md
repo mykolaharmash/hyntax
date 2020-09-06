@@ -13,8 +13,6 @@ Straightforward HTML parser for JavaScript. [Live Demo](https://astexplorer.net/
 -   **Supports streaming.** Can process HTML while it's still being loaded.
 -   **No dependencies.**
 
-
-
 ## Table Of Contents
 
 -   [Usage](#usage)
@@ -24,8 +22,6 @@ Straightforward HTML parser for JavaScript. [Live Demo](https://astexplorer.net/
 -   [AST Format](#ast-format)
 -   [API Reference](#api-reference)
 -   [Types Reference](#types-reference)
-
-
 
 ## Usage
 
@@ -407,7 +403,7 @@ interface Tag {
   attributes?: TagAttribute[]
   openEnd: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagEnd>
   children?: AnyNode[]
-  close: Tokenizer.Token<Tokenizer.TokenTypes.CloseTag>
+  close?: Tokenizer.Token<Tokenizer.TokenTypes.CloseTag>
 }
 ```
 
