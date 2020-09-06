@@ -403,7 +403,7 @@ interface Tag {
   attributes?: TagAttribute[]
   openEnd: Tokenizer.Token<Tokenizer.TokenTypes.OpenTagEnd>
   children?: AnyNode[]
-  close: Tokenizer.Token<Tokenizer.TokenTypes.CloseTag>
+  close?: Tokenizer.Token<Tokenizer.TokenTypes.CloseTag>
 }
 ```
 
