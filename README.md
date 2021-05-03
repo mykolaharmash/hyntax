@@ -1,6 +1,6 @@
 <p align="center">
 
-<img src="./logo.png" alt="Hyntax project logo — lego bricks in the shape of a capital letter H" width="150">
+<img src="./logo.png" alt="Hyntax project logo — lego bricks in the shape of a capital letter H" width="250">
 
 </p>
 
